@@ -72,7 +72,7 @@
 
 
 	<!-- 开启组件扫描 -->
-	<context:component-scan base-package="dao,service,controller" />
+	<context:component-scan base-package="cn/appsys/dao,cn/appsys/service,cn/appsys/controller" />
 	
 	<!-- 静态资源处理 -->
 	<mvc:default-servlet-handler/>
@@ -87,7 +87,7 @@
 	
 	 <!-- 配置视图解析器：如何把handler方法返回值解析为实际的物理视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/jsp/"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
@@ -98,13 +98,13 @@
 	</bean>
 	
 	<!-- 拦截器配制 -->
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/jsp/**"/>
 			<mvc:exclude-mapping path="/jsp/login.jsp"/>
-			<bean class="interceptor.MyInterceptor"></bean>
+			<bean class="cn.appsys.interceptor.MyInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 	
 	<!-- 异常处理bean -->
 	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
