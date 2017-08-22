@@ -1,36 +1,64 @@
 package cn.appsys.tools;
 
 public class Page {
-	//页码
-	private Integer n;
-	//每页显示记录数
-	private Integer size;
-	//总记录数
-	private Integer total;
-	//总页数
+	// 页码
+	private Integer currentPageNo;
+	// 每页显示记录数
 	private Integer pageSize;
-	public Integer getN() {
-		return n;
+	// 总记录数
+	private Integer totalCount;
+	// 总页数
+	private Integer totalPageCount;
+	// limit开始
+	private Integer start;
+
+	// 计算总页数
+	public Integer getTotalPageCount() {
+		if (totalCount % pageSize == 0) {
+			totalPageCount = totalCount / pageSize;
+		} else {
+			totalPageCount = totalCount / pageSize + 1;
+		}
+		return totalPageCount;
 	}
-	public void setN(Integer n) {
-		this.n = n;
+
+	public Integer getStart() {
+		return start;
 	}
-	public Integer getSize() {
-		return size;
+
+	public void setStart(Integer start) {
+		this.start = start;
 	}
-	public void setSize(Integer size) {
-		this.size = size;
+
+	public Integer getCurrentPageNo() {
+		return currentPageNo;
 	}
-	public Integer getTotal() {
-		return total;
+
+	public void setCurrentPageNo(Integer currentPageNo) {
+		this.currentPageNo = currentPageNo;
 	}
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
+
 	public Integer getPageSize() {
 		return pageSize;
 	}
+
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
+
+	public Integer getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(Integer totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	@Override
+	public String toString() {
+		return "Page [currentPageNo=" + currentPageNo + ", pageSize="
+				+ pageSize + ", totalCount=" + totalCount + ", totalPageCount="
+				+ totalPageCount + "]";
+	}
+
 }

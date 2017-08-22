@@ -19,8 +19,8 @@
         <setting name="mapUnderscoreToCamelCase" value="false" />  
 	</settings>
 	<!-- 指定sql映射文件位置  -->
-	<!--  <mappers>
-		<mapper resource="dao/SmbmsUserMapper.xml"/>
-		<mapper resource="dao/SmbmsRoleMapper.xml"/>
-	</mappers>  -->
+	<mappers>
+		<mapper resource="cn/appsys/dao/DevUserMapper.xml"/>
+		<mapper resource="cn/appsys/dao/BackendUserMapper.xml"/>
+	</mappers>
 </configuration>

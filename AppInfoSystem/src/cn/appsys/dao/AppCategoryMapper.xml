@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.AppCategoryMapper" >
-  <resultMap id="BaseResultMap" type="pojo.AppCategory" >
+<mapper namespace="cn.appsys.dao.AppCategoryMapper" >
+  <resultMap id="BaseResultMap" type="cn.appsys.pojo.AppCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="categoryCode" property="categorycode" jdbcType="VARCHAR" />
     <result column="categoryName" property="categoryname" jdbcType="VARCHAR" />
@@ -14,6 +14,19 @@
   <sql id="Base_Column_List" >
     id, categoryCode, categoryName, parentId, createdBy, creationTime, modifyBy, modifyDATE
   </sql>
+  
+  <select id="getAppCategoriesByParentId" resultType="cn.appsys.pojo.AppCategory">
+  	select  id, categoryCode, categoryName from app_category
+  	<trim prefix="where" prefixOverrides="and|or">
+	  	<if test="parentid!=null">
+	  		and parentId=#{parentId}
+	  	</if>
+	  	<if test="parentid==null">
+	  		and parentId is null
+	  	</if>
+  	</trim>
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -24,7 +37,7 @@
     delete from app_category
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="pojo.AppCategory" >
+  <insert id="insert" parameterType="cn.appsys.pojo.AppCategory" >
     insert into app_category (id, categoryCode, categoryName, 
       parentId, createdBy, creationTime, 
       modifyBy, modifyDATE)
@@ -32,7 +45,7 @@
       #{parentid,jdbcType=BIGINT}, #{createdby,jdbcType=BIGINT}, #{creationtime,jdbcType=TIMESTAMP}, 
       #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.AppCategory" >
+  <insert id="insertSelective" parameterType="cn.appsys.pojo.AppCategory" >
     insert into app_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -87,7 +100,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.AppCategory" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.AppCategory" >
     update app_category
     <set >
       <if test="categorycode != null" >
@@ -114,7 +127,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.AppCategory" >
+  <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.AppCategory" >
     update app_category
     set categoryCode = #{categorycode,jdbcType=VARCHAR},
       categoryName = #{categoryname,jdbcType=VARCHAR},

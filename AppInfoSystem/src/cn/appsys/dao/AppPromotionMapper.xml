@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.AppPromotionMapper" >
-  <resultMap id="BaseResultMap" type="pojo.AppPromotion" >
+<mapper namespace="cn.appsys.dao.AppPromotionMapper" >
+  <resultMap id="BaseResultMap" type="cn.appsys.pojo.AppPromotion" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="appId" property="appid" jdbcType="BIGINT" />
     <result column="adPicPath" property="adpicpath" jdbcType="VARCHAR" />
@@ -28,7 +28,7 @@
     delete from app_promotion
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="pojo.AppPromotion" >
+  <insert id="insert" parameterType="cn.appsys.pojo.AppPromotion" >
     insert into app_promotion (id, appId, adPicPath, 
       adPV, carouselPosition, startTime, 
       endTime, createdBy, creationDate, 
@@ -38,7 +38,7 @@
       #{endtime,jdbcType=TIMESTAMP}, #{createdby,jdbcType=BIGINT}, #{creationdate,jdbcType=TIMESTAMP}, 
       #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.AppPromotion" >
+  <insert id="insertSelective" parameterType="cn.appsys.pojo.AppPromotion" >
     insert into app_promotion
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.AppPromotion" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.AppPromotion" >
     update app_promotion
     <set >
       <if test="appid != null" >
@@ -147,7 +147,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.AppPromotion" >
+  <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.AppPromotion" >
     update app_promotion
     set appId = #{appid,jdbcType=BIGINT},
       adPicPath = #{adpicpath,jdbcType=VARCHAR},

@@ -1,8 +1,11 @@
 package cn.appsys.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DevUser {
+public class DevUser implements Serializable {
+	private static final long serialVersionUID = -2550259689783373675L;
+
 	private Long id;
 
 	private String devcode;
@@ -102,4 +105,14 @@ public class DevUser {
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
 	}
+
+	@Override
+	public String toString() {
+		return "DevUser [id=" + id + ", devcode=" + devcode + ", devname="
+				+ devname + ", devpassword=" + devpassword + ", devemail="
+				+ devemail + ", devinfo=" + devinfo + ", createdby="
+				+ createdby + ", creationdate=" + creationdate + ", modifyby="
+				+ modifyby + ", modifydate=" + modifydate + "]";
+	}
+
 }

@@ -6,6 +6,7 @@
 	String path = request.getContextPath();
 	session.setAttribute("path", path);
 %>
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -26,6 +27,25 @@
 
     <!-- Custom Theme Style -->
     <link href="${path}/build/css/custom.min.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="${path}/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".isLogin").on("click",function(){
+			var devcode = $("#devcode").val();
+			var password = $("#devpassword").val();
+			$.getJSON("../devuser/login",{"devcode":devcode,"devpassword":password},function(data){
+				if(data!=null){
+					if(data.flag==0){
+						window.location.href="../devuser/devIndex";
+					}else{
+						$("#loginNameSpan").css("color","red").html(data.msg);
+					}
+				}
+			})
+		})
+	})
+</script>
   </head>
 
   <body class="login">
@@ -36,16 +56,17 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="../devuser/login"  name="actionForm" id="actionForm"  method="post" >
               <h1>APP开发者平台</h1>
               <div>
-                <input type="text" name="usercode" class="form-control" placeholder="请输入用户名" required="" />
+                <input type="text" id="devcode" name="devcode" class="form-control" placeholder="请输入用户名" required="" /><span id="loginNameSpan"></span>
               </div>
               <div>
-                <input type="password" name="password" class="form-control" placeholder="请输入密码" required="" />
+                <input type="password" id="devpassword" name="devpassword" class="form-control" placeholder="请输入密码" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="${path}/user/login">登录</a>
+                <%-- <a class="btn btn-default submit isLogin" href="${path}/user/login">登录</a> --%>
+                <input type="button"   value="登录系统" class="input-button isLogin" />
                 <input type="reset"  value="重　　填" class="btn btn-default submit" />
                 <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
               </div>

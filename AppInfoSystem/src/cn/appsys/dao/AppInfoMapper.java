@@ -1,5 +1,10 @@
 package cn.appsys.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Select;
+
 import cn.appsys.pojo.AppInfo;
 
 public interface AppInfoMapper {
@@ -14,4 +19,13 @@ public interface AppInfoMapper {
 	int updateByPrimaryKeySelective(AppInfo record);
 
 	int updateByPrimaryKey(AppInfo record);
+
+	@Select("select * from app_info")
+	List<AppInfo> getAppList();
+
+	// 获取appinfo列表
+	List<AppInfo> getAppInfoList(Map<String, Object> map);
+
+	// 获取appinfo的数据总数
+	int getAppInfoCount(Map<String, Object> map);
 }

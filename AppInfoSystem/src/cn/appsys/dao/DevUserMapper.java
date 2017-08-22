@@ -1,5 +1,7 @@
 package cn.appsys.dao;
 
+import org.apache.ibatis.annotations.Select;
+
 import cn.appsys.pojo.DevUser;
 
 public interface DevUserMapper {
@@ -14,4 +16,7 @@ public interface DevUserMapper {
 	int updateByPrimaryKeySelective(DevUser record);
 
 	int updateByPrimaryKey(DevUser record);
+
+	@Select("select * from dev_user where devcode=#{devcode}")
+	DevUser selectDevUserByCode(String devcode);
 }
