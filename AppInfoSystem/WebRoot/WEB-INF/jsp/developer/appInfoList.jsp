@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理维护 <small>${devUserSession.devname},form表单提交不到后台,一级分类查询失败</small>
+						APP信息管理维护 <small>${devUserSession.devname},er级分类查询失败</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -48,8 +48,8 @@
 											<option value="">--请选择--</option>
 											<c:forEach items="${statusList}" var="dataDic">
 												<option
-													<c:if test="${dataDic==querystatus}">selected="selected"</c:if>
-													value="dataDic.valueid">${dataDic.valuename}</option>
+													<c:if test="${dataDic.valueid==querystatus}">selected="selected"</c:if>
+													value="${dataDic.valueid}">${dataDic.valuename}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -140,7 +140,10 @@
 	<div class="x_panel">
 		<div class="x_title">
 			<h2>
-				<button type="button" class="btn btn-warning">新增APP基础信息</button>
+				
+				<button type="button" class="btn btn-warning">
+					<a href="${path}/appInfo/addAppInfo">新增APP基础信息</a>
+				</button>
 			</h2>
 			<ul class="nav navbar-right panel_toolbox">
 				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -180,10 +183,10 @@
 										rowspan="1" colspan="1" style="width: 200px;"
 										aria-label="Position: activate to sort column ascending">APK名称</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 110px;"
+										rowspan="1" colspan="1" style="width: 90px;"
 										aria-label="Office: activate to sort column ascending">软件大小(单位:M)</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 61px;"
+										rowspan="1" colspan="1" style="width: 50px;"
 										aria-label="Age: activate to sort column ascending">所属平台</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
 										rowspan="1" colspan="1" style="width: 200px;"
@@ -321,5 +324,6 @@
 
 <div></div>
 <%@include file="common/footer.jsp"%>
+<!-- <script type="text/javascript" src(引用外部js文件)="xxx.js" charset(设置编码格式)="utf-8"></script> -->
 <script src="${pageContext.request.contextPath}/statics/localjs/roolpage.js"></script>
 <script src="${pageContext.request.contextPath}/statics/localjs/appinfolist.js"></script>

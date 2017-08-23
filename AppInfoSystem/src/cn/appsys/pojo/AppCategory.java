@@ -3,13 +3,13 @@ package cn.appsys.pojo;
 import java.util.Date;
 
 public class AppCategory {
-	private Long id;
+	private Integer id;
 
 	private String categorycode;
 
 	private String categoryname;
 
-	private Long parentid;
+	private Integer parentid;
 
 	private Long createdby;
 
@@ -19,11 +19,11 @@ public class AppCategory {
 
 	private Date modifydate;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -43,11 +43,11 @@ public class AppCategory {
 		this.categoryname = categoryname == null ? null : categoryname.trim();
 	}
 
-	public Long getParentid() {
+	public Integer getParentid() {
 		return parentid;
 	}
 
-	public void setParentid(Long parentid) {
+	public void setParentid(Integer parentid) {
 		this.parentid = parentid;
 	}
 

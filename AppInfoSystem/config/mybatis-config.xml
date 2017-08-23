@@ -22,5 +22,10 @@
 	<mappers>
 		<mapper resource="cn/appsys/dao/DevUserMapper.xml"/>
 		<mapper resource="cn/appsys/dao/BackendUserMapper.xml"/>
+		<mapper resource="cn/appsys/dao/AppInfoMapper.xml"/>
+		<mapper resource="cn/appsys/dao/AppCategoryMapper.xml"/>
+		<mapper resource="cn/appsys/dao/AppVersionMapper.xml"/>
+		<mapper resource="cn/appsys/dao/DataDictionaryMapper.xml"/>
+		<mapper resource="cn/appsys/dao/AppPromotionMapper.xml"/>
 	</mappers>
 </configuration>

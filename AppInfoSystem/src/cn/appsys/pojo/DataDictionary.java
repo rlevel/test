@@ -20,6 +20,15 @@ public class DataDictionary {
 	private Long modifyby;
 
 	private Date modifydate;
+	private String tcode;
+
+	public String getTcode() {
+		return tcode;
+	}
+
+	public void setTcode(String tcode) {
+		this.tcode = tcode;
+	}
 
 	public Long getId() {
 		return id;
@@ -92,4 +101,14 @@ public class DataDictionary {
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
 	}
+
+	@Override
+	public String toString() {
+		return "DataDictionary [id=" + id + ", typecode=" + typecode
+				+ ", typename=" + typename + ", valueid=" + valueid
+				+ ", valuename=" + valuename + ", createdby=" + createdby
+				+ ", creationdate=" + creationdate + ", modifyby=" + modifyby
+				+ ", modifydate=" + modifydate + "]";
+	}
+
 }

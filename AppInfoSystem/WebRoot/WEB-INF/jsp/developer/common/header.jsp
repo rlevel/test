@@ -11,9 +11,6 @@
 <html lang="en">
 <head>
 <script type="text/javascript" src="${path }/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Meta, title, CSS, favicons, etc. -->
 <meta charset="utf-8">

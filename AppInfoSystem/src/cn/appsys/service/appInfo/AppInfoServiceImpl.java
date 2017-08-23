@@ -38,4 +38,26 @@ public class AppInfoServiceImpl implements AppInfoService {
 		return rd;
 	}
 
+	@Override
+	public ResultData addAppList(AppInfo appInfos) {
+		ResultData rd = new ResultData();
+		int len = appInfoMapper.insertSelective(appInfos);
+		if (len > 0) {
+			rd.setFlag(0);
+			rd.setMsg("添加成功");
+		} else {
+			rd.setFlag(1);
+			rd.setMsg("添加失败");
+		}
+		return rd;
+	}
+
+	@Override
+	public ResultData getAppInfo(Integer id, String APKName) {
+		ResultData rd = new ResultData();
+		AppInfo app = appInfoMapper.getAppInfo(id, APKName);
+		rd.setData(app);
+		return rd;
+	}
+
 }
