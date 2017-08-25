@@ -6,29 +6,43 @@ import java.util.Date;
 public class AppVersion {
 	private Long id;
 
-	private Long appid;
+	private Long appId;
 
-	private String versionno;
+	private String versionNo;
 
-	private String versioninfo;
+	private String versionInfo;
 
-	private Long publishstatus;
+	private Long publishStatus;
 
-	private String downloadlink;
+	private String downloadLink;
 
-	private BigDecimal versionsize;
+	private BigDecimal versionSize;
 
-	private Long createdby;
+	private Long createdBy;
 
-	private Date creationdate;
+	private Date creationDate;
 
-	private Long modifyby;
+	private Long modifyBy;
 
-	private Date modifydate;
+	private Date modifyDate;
 
-	private String apklocpath;
+	private String apkLocPath;
 
-	private String apkfilename;
+	private String apkFileName;
+
+	private String apkName;
+
+	private String appName;
+
+	private String publishStatusName;
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,99 +52,129 @@ public class AppVersion {
 		this.id = id;
 	}
 
-	public Long getAppid() {
-		return appid;
+	public Long getappId() {
+		return appId;
 	}
 
-	public void setAppid(Long appid) {
-		this.appid = appid;
+	public void setappId(Long appId) {
+		this.appId = appId;
 	}
 
-	public String getVersionno() {
-		return versionno;
+	public String getversionNo() {
+		return versionNo;
 	}
 
-	public void setVersionno(String versionno) {
-		this.versionno = versionno == null ? null : versionno.trim();
+	public void setversionNo(String versionNo) {
+		this.versionNo = versionNo == null ? null : versionNo.trim();
 	}
 
-	public String getVersioninfo() {
-		return versioninfo;
+	public String getversionInfo() {
+		return versionInfo;
 	}
 
-	public void setVersioninfo(String versioninfo) {
-		this.versioninfo = versioninfo == null ? null : versioninfo.trim();
+	public void setversionInfo(String versionInfo) {
+		this.versionInfo = versionInfo == null ? null : versionInfo.trim();
 	}
 
-	public Long getPublishstatus() {
-		return publishstatus;
+	public Long getpublishStatus() {
+		return publishStatus;
 	}
 
-	public void setPublishstatus(Long publishstatus) {
-		this.publishstatus = publishstatus;
+	public void setpublishStatus(Long publishStatus) {
+		this.publishStatus = publishStatus;
 	}
 
-	public String getDownloadlink() {
-		return downloadlink;
+	public String getdownloadLink() {
+		return downloadLink;
 	}
 
-	public void setDownloadlink(String downloadlink) {
-		this.downloadlink = downloadlink == null ? null : downloadlink.trim();
+	public void setdownloadLink(String downloadLink) {
+		this.downloadLink = downloadLink == null ? null : downloadLink.trim();
 	}
 
-	public BigDecimal getVersionsize() {
-		return versionsize;
+	public BigDecimal getversionSize() {
+		return versionSize;
 	}
 
-	public void setVersionsize(BigDecimal versionsize) {
-		this.versionsize = versionsize;
+	public void setversionSize(BigDecimal versionSize) {
+		this.versionSize = versionSize;
 	}
 
-	public Long getCreatedby() {
-		return createdby;
+	public Long getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public Date getCreationdate() {
-		return creationdate;
+	public Date getcreationDate() {
+		return creationDate;
 	}
 
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
+	public void setcreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
-	public Long getModifyby() {
-		return modifyby;
+	public Long getmodifyBy() {
+		return modifyBy;
 	}
 
-	public void setModifyby(Long modifyby) {
-		this.modifyby = modifyby;
+	public void setmodifyBy(Long modifyBy) {
+		this.modifyBy = modifyBy;
 	}
 
-	public Date getModifydate() {
-		return modifydate;
+	public Date getmodifyDate() {
+		return modifyDate;
 	}
 
-	public void setModifydate(Date modifydate) {
-		this.modifydate = modifydate;
+	public void setmodifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
 	}
 
-	public String getApklocpath() {
-		return apklocpath;
+	public String getApkLocPath() {
+		return apkLocPath;
 	}
 
-	public void setApklocpath(String apklocpath) {
-		this.apklocpath = apklocpath == null ? null : apklocpath.trim();
+	public void setApkLocPath(String apkLocPath) {
+		this.apkLocPath = apkLocPath;
 	}
 
-	public String getApkfilename() {
-		return apkfilename;
+	public String getApkFileName() {
+		return apkFileName;
 	}
 
-	public void setApkfilename(String apkfilename) {
-		this.apkfilename = apkfilename == null ? null : apkfilename.trim();
+	public void setApkFileName(String apkFileName) {
+		this.apkFileName = apkFileName;
 	}
+
+	public String getapkName() {
+		return apkName;
+	}
+
+	public void setapkName(String apkName) {
+		this.apkName = apkName;
+	}
+
+	public String getpublishStatusName() {
+		return publishStatusName;
+	}
+
+	public void setpublishStatusName(String publishStatusName) {
+		this.publishStatusName = publishStatusName;
+	}
+
+	@Override
+	public String toString() {
+		return "AppVersion [id=" + id + ", appId=" + appId + ", versionNo="
+				+ versionNo + ", versionInfo=" + versionInfo
+				+ ", publishStatus=" + publishStatus + ", downloadLink="
+				+ downloadLink + ", versionSize=" + versionSize
+				+ ", createdBy=" + createdBy + ", creationDate=" + creationDate
+				+ ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate
+				+ ", apkLocPath=" + apkLocPath + ", apkFileName=" + apkFileName
+				+ ", apkName=" + apkName + ", appName=" + appName
+				+ ", publishStatusName=" + publishStatusName + "]";
+	}
+
 }

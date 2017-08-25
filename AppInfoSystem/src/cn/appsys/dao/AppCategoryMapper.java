@@ -21,5 +21,5 @@ public interface AppCategoryMapper {
 
 	// 通过parentId查询APPcategory信息
 	List<AppCategory> getAppCategoriesByParentId(
-			@Param("parentid") Integer parentid);
+			@Param("parentId") Integer parentId);
 }

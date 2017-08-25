@@ -4,14 +4,12 @@ $(function(){
 		$.ajax({
 			type:"GET",// 请求类型
 			url:"../appInfo/apkexist.json",// 请求的URL
-			data:{APKName:$("#APKName").val},// 请求参数
+			data:{"APKName":$("#APKName").val()},// 请求参数
 			dataType:"json",// ajax接口(请求url)返回的数据类型
 			success:function(data){// data:返回的json对象(返回的数据)
-				if(data.APKName=="empty"){
-					alert("APKName不能为空");
-				}else if(data.APKName=="exist"){
+				if(data.flag==1){
 					alert("APKName已存在,换一个");
-				}else if(data.APKName=="noexist"){
+				}else {
 					alert("APKName可以使用");
 				}
 			},
@@ -60,30 +58,29 @@ $(function(){
 		}
 	});*/
 	$("#querycategoryLevel1").change(function(){
-		var querycategoryLevel1= $("#querycategoryLevel1").val();
-		if(querycategoryLevel1!="" && querycategoryLevel1!=null){
+		var level1= $(this).val();
+		if(level1!="" && level1!=null){
 			$.ajax({
 				//请求类型
 				type:"GET",
 				//请求的URL
 				url:"../appInfo/categoryLevelList.json",
-				data:{pid:level1},
+				data:{"pid":level1},
 				//返回的数据类型
 				dataType:"json",
 				success:function(data){//data:返回的json对象
-					$("#querycategoryLevel2").html("");
+					//$("#querycategoryLevel2").append("");
 					var options = "<option value=''>--请选择--</option>"
-					for(var i=0;i<data.lenth;i++){
-						option +="<option value='"+data[i].id+"'>"+data[i].categoryname+"</option>";
+					for(var i=0;i<data.data.length;i++){
+						var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
+						$("#querycategoryLevel2").append(j);
 					}
-					$("#querycategoryLevel2").html(options);
 				},
 				error:function(data){//当访问时可能出现404,505
-					alert("加载二级分类失败");
+					alert("加载二级分类失败")
 				}
-			});
+			})
 		}else{
-	//		var options = "<option value=\"\">--请选择--</option>"
 			$("#querycategoryLevel2").html();
 			var options = "<option value=''>--请选择--</option>"
 			$("#querycategoryLevel2").html(options);
@@ -93,28 +90,36 @@ $(function(){
 		$("#querycategoryLevel3").html(options);
 	});
 	$("#querycategoryLevel2").change(function(){
-		var querycategoryLevel2= $("querycategoryLevel2").val();
+		var querycategoryLevel2= $("#querycategoryLevel2").val();
 		if(querycategoryLevel2!="" && querycategoryLevel2!=null){
 			$.ajax({
 				//请求类型
 				type:"GET",
 				//请求的URL
-				url:"../appInfo/categorylevel1List.json",
-				data:{pid:level1},
+				url:"../appInfo/categoryLevelList.json",
+				data:{pid:querycategoryLevel2},
 				//返回的数据类型
 				dataType:"json",
 				success:function(data){//data:返回的json对象
-					$("querycategoryLevel3").html("");
+					//$("#querycategoryLevel3").html("");
 					var options = "<option value=''>--请选择--</option>"
-					for(var i=0;i<data.lenth;i++){
-						option +="<option value='"+data[i].id+"'>"+data[i].categoryname+"</option>";
-					}
-					$("#querycategoryLevel3").html(options);
+						for(var i=0;i<data.data.length;i++){
+							var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
+							$("#querycategoryLevel3").append(j);
+						}
+					
+					
+					/*//$("#querycategoryLevel2").html("");
+					var options = "<option value=''>--请选择--</option>"
+					for(var i=0;i<data.data.length;i++){
+						var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryname+"</option>";
+						$("#querycategoryLevel2").append(j);
+					}*/
 				},
 				error:function(data){//当访问时可能出现404,505
-					alert("加载三级分类失败");
+					alert("加载三级分类失败")
 				}
-			});
+			})
 		}else{
 			$("#querycategoryLevel3").html();
 			var options = "<option value=''>--请选择--</option>"

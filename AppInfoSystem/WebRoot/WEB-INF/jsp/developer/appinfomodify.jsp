@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%@include file="common/header.jsp"%>
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
 				<h2>
-					新增APP基础信息<small>${devUserSession.devname}</small>
+					修改APP基础信息<small>${devUserSession.devname}</small>应用简介的属性名
 				</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -23,15 +24,16 @@
 			</div>
 			<div class="x_content">
 				<br />
-				<form id="demo-form2" data-parsley-validate action="${path}/appInfo/appinfoaddsave" method="post" enctype="multipart/form-data"
-					class="form-horizontal form-label-left">
+				<form modelAttribute="appInfos" data-parsley-validate action="${path}/appInfo/appinfomodify" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+					<input type="hidden" name="id" id="id" value="${appInfo.id}"/>
+					<%-- <f:hidden path="id"/> --%>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12"
 							for="name">软件名称&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" name="softwareName" id="softwareName"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入软件名称">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.softwareName }">
 						</div>
 					</div>
 					<div class="form-group">
@@ -40,7 +42,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" id="APKName" name= "APKName"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入APK名称" value=""/>
+								class="form-control col-md-7 col-xs-12" value="${appInfo.APKName}"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -49,7 +51,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" id="first-name" id="supportROM" name="supportROM"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入支持的ROM">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.supportROM}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -58,7 +60,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" id="first-name"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入软件支持的界面语言">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.interfaceLanguage }">
 						</div>
 					</div>
 					<div class="form-group">
@@ -67,7 +69,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="number" id="first-name" name="softwareSize" id="softwareSize"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入软件大小,单位为Mb">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.softwareSize }">
 						</div>
 					</div>
 					<div class="form-group">
@@ -76,7 +78,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="number" id="first-name" name="downloads" id="downloads"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入下载次数">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.downloads }">
 						</div>
 					</div>
 					<div class="form-group">
@@ -90,7 +92,7 @@
 								<option value="">--请选择--</option>
 								<c:forEach items="${flatFormList}" var="dataDic">
 									<option
-										<c:if test="${dataDic.valueId==queryflatformId}">selected="selected"</c:if>
+										<c:if test="${dataDic.valueId==appInfo.flatformId}">selected="selected"</c:if>
 										value="${dataDic.valueId}">${dataDic.valueName}</option>
 								</c:forEach>
 							</select>
@@ -102,13 +104,14 @@
 					<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<select name="querycategoryLevel1" id="querycategoryLevel1"
+										<input type="hidden" value="${appInfo.categoryLevel1}" id="cl1"/>
+										<select name="categoryLevel1" id="categoryLevel1"
 											class="form-control">
 											<c:if test="${categorylevel1List!=null}"></c:if>
 											<option value="">--请选择--</option>
 											<c:forEach items="${categorylevel1List}" var="appCa">
 												<option
-													<c:if test="${appCa.id==querycategoryLevel1}">selected="selected"</c:if>
+													<c:if test="${appCa.id==appInfo.categoryLevel1}">selected="selected"</c:if>
 													value="${appCa.id}">${appCa.categoryName}</option>
 											</c:forEach>
 										</select>
@@ -117,7 +120,8 @@
 					<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">二级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<select name="querycategoryLevel2" id="querycategoryLevel2"
+									<input type="hidden" value="${appInfo.categoryLevel2}" id="cl2"/>
+										<select name="categoryLevel2" id="categoryLevel2"
 											class="form-control">
 											<c:if test="${result.data!=null}"></c:if>
 											<option value="">--请选择--</option>
@@ -132,7 +136,8 @@
 					<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">三级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<select name="querycategoryLevel3" id="querycategoryLevel3"
+									<input type="hidden" value="${appInfo.categoryLevel3}" id="cl3"/>
+										<select name="categoryLevel3" id="categoryLevel3"
 											class="form-control">
 											<c:if test="${result.data!=null}"></c:if>
 											<option value="">--请选择--</option>
@@ -160,7 +165,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<textarea id= "appInfo" name= "appInfo"
-								class="form-control col-md-7 col-xs-12" placeholder="请输入本软件的相关信息,本信息作为软件的详细信息进行软件介绍"></textarea>
+								class="form-control col-md-7 col-xs-12" value="${appInfo.appInfo}"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -168,8 +173,14 @@
 							for="first-name">LOGO图片&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="file" id="a_logoPicPath" name="a_logoPicPath"
-								class="form-control col-md-7 col-xs-12">
+							<input type="hidden" id="logoPicPath" name="logoPicPath" value="${appInfo.logoPicPath}"/>
+							<input type="hidden" id="logoLocPath" name="logoLocPath" value="${appInfo.logoLocPath}"/>
+							<div id="uploadfile" style="display:none">
+							<input type="file" id="attach" name="attach"
+								class="form-control col-md-7 col-xs-12"><p>
+								<span style="color:red;font-weight:bold;">*注:1.大小不得超过500k,2.图片格式:jsp...4个</span></p>
+							</div>
+							<div id="logoFile"></div>
 								${fileUploadError }
 						</div>
 					</div>
@@ -178,7 +189,7 @@
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 							<button class="btn btn-primary" type="button">Cancel</button>
 							<button id="back" class="btn btn-primary" type="reset">Reset</button>
-							<button type="submit" class="btn btn-success">Submit</button>
+							<button id="send" type="submit" class="btn btn-success">Submit</button>
 						</div>
 					</div>
 
@@ -188,4 +199,5 @@
 	</div>
 </div>
 <%@include file="common/footer.jsp"%>
-<script src="${pageContext.request.contextPath}/statics/localjs/appinfoadd.js"></script>
+<script
+	src="${pageContext.request.contextPath}/statics/localjs/appinfomodify.js"></script>

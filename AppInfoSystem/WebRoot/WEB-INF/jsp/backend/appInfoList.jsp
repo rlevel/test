@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理维护 <small>${devUserSession.devname},属性名不匹配</small>
+						APP信息管理审核 <small>${devUserSession.devname},属性名不匹配</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

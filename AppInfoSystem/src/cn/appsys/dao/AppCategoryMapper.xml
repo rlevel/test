@@ -3,13 +3,13 @@
 <mapper namespace="cn.appsys.dao.AppCategoryMapper" >
   <resultMap id="BaseResultMap" type="cn.appsys.pojo.AppCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="categoryCode" property="categorycode" jdbcType="VARCHAR" />
-    <result column="categoryName" property="categoryname" jdbcType="VARCHAR" />
-    <result column="parentId" property="parentid" jdbcType="BIGINT" />
-    <result column="createdBy" property="createdby" jdbcType="BIGINT" />
-    <result column="creationTime" property="creationtime" jdbcType="TIMESTAMP" />
-    <result column="modifyBy" property="modifyby" jdbcType="BIGINT" />
-    <result column="modifyDATE" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="categoryCode" property="categoryCode" jdbcType="VARCHAR" />
+    <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="BIGINT" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="modifyBy" property="modifyBy" jdbcType="BIGINT" />
+    <result column="modifyDATE" property="modifyDATE" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, categoryCode, categoryName, parentId, createdBy, creationTime, modifyBy, modifyDATE
@@ -18,10 +18,10 @@
   <select id="getAppCategoriesByParentId" resultType="cn.appsys.pojo.AppCategory">
   	select id,categoryCode,categoryName,parentId from app_category
   	<trim prefix="where" prefixOverrides="and|or">
-	  	<if test="parentid!=null">
-	  		and parentId= #{parentid,jdbcType=BIGINT}
+	  	<if test="parentId!=null">
+	  		and parentId= #{parentId,jdbcType=BIGINT}
 	  	</if>
-	  	<if test="parentid==null">
+	  	<if test="parentId==null">
 	  		and parentId is null
 	  	</if>
   	</trim>
@@ -41,9 +41,9 @@
     insert into app_category (id, categoryCode, categoryName, 
       parentId, createdBy, creationTime, 
       modifyBy, modifyDATE)
-    values (#{id,jdbcType=BIGINT}, #{categorycode,jdbcType=VARCHAR}, #{categoryname,jdbcType=VARCHAR}, 
-      #{parentid,jdbcType=BIGINT}, #{createdby,jdbcType=BIGINT}, #{creationtime,jdbcType=TIMESTAMP}, 
-      #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP})
+    values (#{id,jdbcType=BIGINT}, #{categoryCode,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT}, #{createdBy,jdbcType=BIGINT}, #{creationTime,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=BIGINT}, #{modifyDATE,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.appsys.pojo.AppCategory" >
     insert into app_category
@@ -51,25 +51,25 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="categorycode != null" >
+      <if test="categoryCode != null" >
         categoryCode,
       </if>
-      <if test="categoryname != null" >
+      <if test="categoryName != null" >
         categoryName,
       </if>
-      <if test="parentid != null" >
+      <if test="parentId != null" >
         parentId,
       </if>
-      <if test="createdby != null" >
+      <if test="createdBy != null" >
         createdBy,
       </if>
-      <if test="creationtime != null" >
+      <if test="creationTime != null" >
         creationTime,
       </if>
-      <if test="modifyby != null" >
+      <if test="modifyBy != null" >
         modifyBy,
       </if>
-      <if test="modifydate != null" >
+      <if test="modifyDATE != null" >
         modifyDATE,
       </if>
     </trim>
@@ -77,65 +77,65 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="categorycode != null" >
-        #{categorycode,jdbcType=VARCHAR},
+      <if test="categoryCode != null" >
+        #{categoryCode,jdbcType=VARCHAR},
       </if>
-      <if test="categoryname != null" >
-        #{categoryname,jdbcType=VARCHAR},
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="parentid != null" >
-        #{parentid,jdbcType=BIGINT},
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="createdby != null" >
-        #{createdby,jdbcType=BIGINT},
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
       </if>
-      <if test="creationtime != null" >
-        #{creationtime,jdbcType=TIMESTAMP},
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyby != null" >
-        #{modifyby,jdbcType=BIGINT},
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
       </if>
-      <if test="modifydate != null" >
-        #{modifydate,jdbcType=TIMESTAMP},
+      <if test="modifyDATE != null" >
+        #{modifyDATE,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.AppCategory" >
     update app_category
     <set >
-      <if test="categorycode != null" >
-        categoryCode = #{categorycode,jdbcType=VARCHAR},
+      <if test="categoryCode != null" >
+        categoryCode = #{categoryCode,jdbcType=VARCHAR},
       </if>
-      <if test="categoryname != null" >
-        categoryName = #{categoryname,jdbcType=VARCHAR},
+      <if test="categoryName != null" >
+        categoryName = #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="parentid != null" >
-        parentId = #{parentid,jdbcType=BIGINT},
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="createdby != null" >
-        createdBy = #{createdby,jdbcType=BIGINT},
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=BIGINT},
       </if>
-      <if test="creationtime != null" >
-        creationTime = #{creationtime,jdbcType=TIMESTAMP},
+      <if test="creationTime != null" >
+        creationTime = #{creationTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyby != null" >
-        modifyBy = #{modifyby,jdbcType=BIGINT},
+      <if test="modifyBy != null" >
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
       </if>
-      <if test="modifydate != null" >
-        modifyDATE = #{modifydate,jdbcType=TIMESTAMP},
+      <if test="modifyDATE != null" >
+        modifyDATE = #{modifyDATE,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.AppCategory" >
     update app_category
-    set categoryCode = #{categorycode,jdbcType=VARCHAR},
-      categoryName = #{categoryname,jdbcType=VARCHAR},
-      parentId = #{parentid,jdbcType=BIGINT},
-      createdBy = #{createdby,jdbcType=BIGINT},
-      creationTime = #{creationtime,jdbcType=TIMESTAMP},
-      modifyBy = #{modifyby,jdbcType=BIGINT},
-      modifyDATE = #{modifydate,jdbcType=TIMESTAMP}
+    set categoryCode = #{categoryCode,jdbcType=VARCHAR},
+      categoryName = #{categoryName,jdbcType=VARCHAR},
+      parentId = #{parentId,jdbcType=BIGINT},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationTime = #{creationTime,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDATE = #{modifyDATE,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

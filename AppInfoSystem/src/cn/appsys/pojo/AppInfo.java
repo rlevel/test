@@ -9,51 +9,51 @@ public class AppInfo implements Serializable {
 
 	private Long id;
 
-	private String softwarename;
+	private String softwareName;
 
-	private String apkname;
+	private String APKName;
 
-	private String supportrom;
+	private String supportROM;
 
-	private String interfacelanguage;
+	private String interfaceLanguage;
 
-	private BigDecimal softwaresize;
+	private BigDecimal softwareSize;
 
-	private Date updatedate;
+	private Date updateDate;
 
-	private Long devid;
+	private Long devId;
 
-	private String appinfo;
+	private String appInfo;
 
 	private Long status;
 
-	private Date onsaledate;
+	private Date onSaleDate;
 
-	private Date offsaledate;
+	private Date offSaleDate;
 
-	private Long flatformid;
+	private Long flatformId;
 
-	private Long categorylevel1;
+	private Integer categoryLevel1;
 
-	private Long categorylevel2;
+	private Integer categoryLevel2;
 
-	private Long categorylevel3;
+	private Integer categoryLevel3;
 
 	private Long downloads;
 
-	private Long createdby;
+	private Long createdBy;
 
-	private Date creationdate;
+	private Date creationDate;
 
-	private Long modifyby;
+	private Long modifyBy;
 
-	private Date modifydate;
+	private Date modifyDate;
 
-	private String logopicpath;
+	private String logoPicPath;
 
-	private String logolocpath;
+	private String logoLocPath;
 
-	private Long versionid;
+	private Long versionId;
 
 	private String statusName;
 
@@ -123,69 +123,12 @@ public class AppInfo implements Serializable {
 		this.id = id;
 	}
 
-	public String getSoftwarename() {
-		return softwarename;
+	public String getAPKName() {
+		return APKName;
 	}
 
-	public void setSoftwarename(String softwarename) {
-		this.softwarename = softwarename == null ? null : softwarename.trim();
-	}
-
-	public String getApkname() {
-		return apkname;
-	}
-
-	public void setApkname(String apkname) {
-		this.apkname = apkname == null ? null : apkname.trim();
-	}
-
-	public String getSupportrom() {
-		return supportrom;
-	}
-
-	public void setSupportrom(String supportrom) {
-		this.supportrom = supportrom == null ? null : supportrom.trim();
-	}
-
-	public String getInterfacelanguage() {
-		return interfacelanguage;
-	}
-
-	public void setInterfacelanguage(String interfacelanguage) {
-		this.interfacelanguage = interfacelanguage == null ? null
-				: interfacelanguage.trim();
-	}
-
-	public BigDecimal getSoftwaresize() {
-		return softwaresize;
-	}
-
-	public void setSoftwaresize(BigDecimal softwaresize) {
-		this.softwaresize = softwaresize;
-	}
-
-	public Date getUpdatedate() {
-		return updatedate;
-	}
-
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
-	}
-
-	public Long getDevid() {
-		return devid;
-	}
-
-	public void setDevid(Long devid) {
-		this.devid = devid;
-	}
-
-	public String getAppinfo() {
-		return appinfo;
-	}
-
-	public void setAppinfo(String appinfo) {
-		this.appinfo = appinfo == null ? null : appinfo.trim();
+	public void setAPKName(String aPKName) {
+		APKName = aPKName;
 	}
 
 	public Long getStatus() {
@@ -196,54 +139,6 @@ public class AppInfo implements Serializable {
 		this.status = status;
 	}
 
-	public Date getOnsaledate() {
-		return onsaledate;
-	}
-
-	public void setOnsaledate(Date onsaledate) {
-		this.onsaledate = onsaledate;
-	}
-
-	public Date getOffsaledate() {
-		return offsaledate;
-	}
-
-	public void setOffsaledate(Date offsaledate) {
-		this.offsaledate = offsaledate;
-	}
-
-	public Long getFlatformid() {
-		return flatformid;
-	}
-
-	public void setFlatformid(Long flatformid) {
-		this.flatformid = flatformid;
-	}
-
-	public Long getCategorylevel1() {
-		return categorylevel1;
-	}
-
-	public void setCategorylevel1(Long categorylevel1) {
-		this.categorylevel1 = categorylevel1;
-	}
-
-	public Long getCategorylevel2() {
-		return categorylevel2;
-	}
-
-	public void setCategorylevel2(Long categorylevel2) {
-		this.categorylevel2 = categorylevel2;
-	}
-
-	public Long getCategorylevel3() {
-		return categorylevel3;
-	}
-
-	public void setCategorylevel3(Long categorylevel3) {
-		this.categorylevel3 = categorylevel3;
-	}
-
 	public Long getDownloads() {
 		return downloads;
 	}
@@ -252,77 +147,181 @@ public class AppInfo implements Serializable {
 		this.downloads = downloads;
 	}
 
-	public Long getCreatedby() {
-		return createdby;
+	public String getSoftwareName() {
+		return softwareName;
 	}
 
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
+	public void setSoftwareName(String softwareName) {
+		this.softwareName = softwareName;
 	}
 
-	public Date getCreationdate() {
-		return creationdate;
+	public String getSupportROM() {
+		return supportROM;
 	}
 
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
+	public void setSupportROM(String supportROM) {
+		this.supportROM = supportROM;
 	}
 
-	public Long getModifyby() {
-		return modifyby;
+	public String getInterfaceLanguage() {
+		return interfaceLanguage;
 	}
 
-	public void setModifyby(Long modifyby) {
-		this.modifyby = modifyby;
+	public void setInterfaceLanguage(String interfaceLanguage) {
+		this.interfaceLanguage = interfaceLanguage;
 	}
 
-	public Date getModifydate() {
-		return modifydate;
+	public BigDecimal getSoftwareSize() {
+		return softwareSize;
 	}
 
-	public void setModifydate(Date modifydate) {
-		this.modifydate = modifydate;
+	public void setSoftwareSize(BigDecimal softwareSize) {
+		this.softwareSize = softwareSize;
 	}
 
-	public String getLogopicpath() {
-		return logopicpath;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setLogopicpath(String logopicpath) {
-		this.logopicpath = logopicpath == null ? null : logopicpath.trim();
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public String getLogolocpath() {
-		return logolocpath;
+	public Long getDevId() {
+		return devId;
 	}
 
-	public void setLogolocpath(String logolocpath) {
-		this.logolocpath = logolocpath == null ? null : logolocpath.trim();
+	public void setDevId(Long devId) {
+		this.devId = devId;
 	}
 
-	public Long getVersionid() {
-		return versionid;
+	public String getAppInfo() {
+		return appInfo;
 	}
 
-	public void setVersionid(Long versionid) {
-		this.versionid = versionid;
+	public void setAppInfo(String appInfo) {
+		this.appInfo = appInfo;
+	}
+
+	public Date getOnSaleDate() {
+		return onSaleDate;
+	}
+
+	public void setOnSaleDate(Date onSaleDate) {
+		this.onSaleDate = onSaleDate;
+	}
+
+	public Date getOffSaleDate() {
+		return offSaleDate;
+	}
+
+	public void setOffSaleDate(Date offSaleDate) {
+		this.offSaleDate = offSaleDate;
+	}
+
+	public Long getFlatformId() {
+		return flatformId;
+	}
+
+	public void setFlatformId(Long flatformId) {
+		this.flatformId = flatformId;
+	}
+
+	public Integer getCategoryLevel1() {
+		return categoryLevel1;
+	}
+
+	public void setCategoryLevel1(Integer categoryLevel1) {
+		this.categoryLevel1 = categoryLevel1;
+	}
+
+	public Integer getCategoryLevel2() {
+		return categoryLevel2;
+	}
+
+	public void setCategoryLevel2(Integer categoryLevel2) {
+		this.categoryLevel2 = categoryLevel2;
+	}
+
+	public Integer getCategoryLevel3() {
+		return categoryLevel3;
+	}
+
+	public void setCategoryLevel3(Integer categoryLevel3) {
+		this.categoryLevel3 = categoryLevel3;
+	}
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Long getModifyBy() {
+		return modifyBy;
+	}
+
+	public void setModifyBy(Long modifyBy) {
+		this.modifyBy = modifyBy;
+	}
+
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
+	public String getLogoPicPath() {
+		return logoPicPath;
+	}
+
+	public void setLogoPicPath(String logoPicPath) {
+		this.logoPicPath = logoPicPath;
+	}
+
+	public String getLogoLocPath() {
+		return logoLocPath;
+	}
+
+	public void setLogoLocPath(String logoLocPath) {
+		this.logoLocPath = logoLocPath;
+	}
+
+	public Long getVersionId() {
+		return versionId;
+	}
+
+	public void setVersionId(Long versionId) {
+		this.versionId = versionId;
 	}
 
 	@Override
 	public String toString() {
-		return "AppInfo [id=" + id + ", softwarename=" + softwarename
-				+ ", apkname=" + apkname + ", supportrom=" + supportrom
-				+ ", interfacelanguage=" + interfacelanguage
-				+ ", softwaresize=" + softwaresize + ", updatedate="
-				+ updatedate + ", devid=" + devid + ", appinfo=" + appinfo
-				+ ", status=" + status + ", onsaledate=" + onsaledate
-				+ ", offsaledate=" + offsaledate + ", flatformid=" + flatformid
-				+ ", categorylevel1=" + categorylevel1 + ", categorylevel2="
-				+ categorylevel2 + ", categorylevel3=" + categorylevel3
-				+ ", downloads=" + downloads + ", createdby=" + createdby
-				+ ", creationdate=" + creationdate + ", modifyby=" + modifyby
-				+ ", modifydate=" + modifydate + ", logopicpath=" + logopicpath
-				+ ", logolocpath=" + logolocpath + ", versionid=" + versionid
+		return "AppInfo [id=" + id + ", softwareName=" + softwareName
+				+ ", APKName=" + APKName + ", supportROM=" + supportROM
+				+ ", interfaceLanguage=" + interfaceLanguage
+				+ ", softwareSize=" + softwareSize + ", updateDate="
+				+ updateDate + ", devId=" + devId + ", appInfo=" + appInfo
+				+ ", status=" + status + ", onSaleDate=" + onSaleDate
+				+ ", offSaleDate=" + offSaleDate + ", flatformId=" + flatformId
+				+ ", categoryLevel1=" + categoryLevel1 + ", categoryLevel2="
+				+ categoryLevel2 + ", categoryLevel3=" + categoryLevel3
+				+ ", downloads=" + downloads + ", createdBy=" + createdBy
+				+ ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
+				+ ", modifyDate=" + modifyDate + ", logoPicPath=" + logoPicPath
+				+ ", logoLocPath=" + logoLocPath + ", versionId=" + versionId
 				+ ", statusName=" + statusName + ", flatformName="
 				+ flatformName + ", categorylevel1Name=" + categorylevel1Name
 				+ ", categorylevel2Name=" + categorylevel2Name

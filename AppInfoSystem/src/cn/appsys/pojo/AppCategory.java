@@ -5,19 +5,19 @@ import java.util.Date;
 public class AppCategory {
 	private Integer id;
 
-	private String categorycode;
+	private String categoryCode;
 
-	private String categoryname;
+	private String categoryName;
 
-	private Integer parentid;
+	private Integer parentId;
 
-	private Long createdby;
+	private Long createdBy;
 
-	private Date creationtime;
+	private Date creationTime;
 
-	private Long modifyby;
+	private Long modifyBy;
 
-	private Date modifydate;
+	private Date modifyDate;
 
 	public Integer getId() {
 		return id;
@@ -27,68 +27,68 @@ public class AppCategory {
 		this.id = id;
 	}
 
-	public String getCategorycode() {
-		return categorycode;
+	public String getCategoryCode() {
+		return categoryCode;
 	}
 
-	public void setCategorycode(String categorycode) {
-		this.categorycode = categorycode == null ? null : categorycode.trim();
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
 	}
 
-	public String getCategoryname() {
-		return categoryname;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategoryname(String categoryname) {
-		this.categoryname = categoryname == null ? null : categoryname.trim();
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	public Integer getParentid() {
-		return parentid;
+	public Integer getParentId() {
+		return parentId;
 	}
 
-	public void setParentid(Integer parentid) {
-		this.parentid = parentid;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
-	public Long getCreatedby() {
-		return createdby;
+	public Long getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public Date getCreationtime() {
-		return creationtime;
+	public Date getCreationTime() {
+		return creationTime;
 	}
 
-	public void setCreationtime(Date creationtime) {
-		this.creationtime = creationtime;
+	public void setCreationTime(Date creationTime) {
+		this.creationTime = creationTime;
 	}
 
-	public Long getModifyby() {
-		return modifyby;
+	public Long getModifyBy() {
+		return modifyBy;
 	}
 
-	public void setModifyby(Long modifyby) {
-		this.modifyby = modifyby;
+	public void setModifyBy(Long modifyBy) {
+		this.modifyBy = modifyBy;
 	}
 
-	public Date getModifydate() {
-		return modifydate;
+	public Date getModifyDate() {
+		return modifyDate;
 	}
 
-	public void setModifydate(Date modifydate) {
-		this.modifydate = modifydate;
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
 	}
 
 	@Override
 	public String toString() {
-		return "AppCategory [id=" + id + ", categorycode=" + categorycode
-				+ ", categoryname=" + categoryname + ", parentid=" + parentid
-				+ ", createdby=" + createdby + ", creationtime=" + creationtime
-				+ ", modifyby=" + modifyby + ", modifydate=" + modifydate + "]";
+		return "AppCategory [id=" + id + ", categoryCode=" + categoryCode
+				+ ", categoryName=" + categoryName + ", parentId=" + parentId
+				+ ", createdBy=" + createdBy + ", creationTime=" + creationTime
+				+ ", modifyBy=" + modifyBy + ", modifyDate=" + modifyDate + "]";
 	}
 
 }

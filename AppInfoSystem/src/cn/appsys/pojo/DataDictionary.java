@@ -5,21 +5,21 @@ import java.util.Date;
 public class DataDictionary {
 	private Long id;
 
-	private String typecode;
+	private String typeCode;
 
-	private String typename;
+	private String typeName;
 
-	private Long valueid;
+	private Long valueId;
 
-	private String valuename;
+	private String valueName;
 
-	private Long createdby;
+	private Long createdBy;
 
-	private Date creationdate;
+	private Date creationDate;
 
-	private Long modifyby;
+	private Long modifyBy;
 
-	private Date modifydate;
+	private Date modifyDate;
 	private String tcode;
 
 	public String getTcode() {
@@ -38,77 +38,77 @@ public class DataDictionary {
 		this.id = id;
 	}
 
-	public String getTypecode() {
-		return typecode;
+	public String gettypeCode() {
+		return typeCode;
 	}
 
-	public void setTypecode(String typecode) {
-		this.typecode = typecode == null ? null : typecode.trim();
+	public void settypeCode(String typeCode) {
+		this.typeCode = typeCode == null ? null : typeCode.trim();
 	}
 
-	public String getTypename() {
-		return typename;
+	public String gettypeName() {
+		return typeName;
 	}
 
-	public void setTypename(String typename) {
-		this.typename = typename == null ? null : typename.trim();
+	public void settypeName(String typeName) {
+		this.typeName = typeName == null ? null : typeName.trim();
 	}
 
-	public Long getValueid() {
-		return valueid;
+	public Long getvalueId() {
+		return valueId;
 	}
 
-	public void setValueid(Long valueid) {
-		this.valueid = valueid;
+	public void setvalueId(Long valueId) {
+		this.valueId = valueId;
 	}
 
-	public String getValuename() {
-		return valuename;
+	public String getvalueName() {
+		return valueName;
 	}
 
-	public void setValuename(String valuename) {
-		this.valuename = valuename == null ? null : valuename.trim();
+	public void setvalueName(String valueName) {
+		this.valueName = valueName == null ? null : valueName.trim();
 	}
 
-	public Long getCreatedby() {
-		return createdby;
+	public Long getcreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
+	public void setcreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
 	}
 
-	public Date getCreationdate() {
-		return creationdate;
+	public Date getcreationDate() {
+		return creationDate;
 	}
 
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
+	public void setcreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
-	public Long getModifyby() {
-		return modifyby;
+	public Long getmodifyBy() {
+		return modifyBy;
 	}
 
-	public void setModifyby(Long modifyby) {
-		this.modifyby = modifyby;
+	public void setmodifyBy(Long modifyBy) {
+		this.modifyBy = modifyBy;
 	}
 
-	public Date getModifydate() {
-		return modifydate;
+	public Date getmodifyDate() {
+		return modifyDate;
 	}
 
-	public void setModifydate(Date modifydate) {
-		this.modifydate = modifydate;
+	public void setmodifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
 	}
 
 	@Override
 	public String toString() {
-		return "DataDictionary [id=" + id + ", typecode=" + typecode
-				+ ", typename=" + typename + ", valueid=" + valueid
-				+ ", valuename=" + valuename + ", createdby=" + createdby
-				+ ", creationdate=" + creationdate + ", modifyby=" + modifyby
-				+ ", modifydate=" + modifydate + "]";
+		return "DataDictionary [id=" + id + ", typeCode=" + typeCode
+				+ ", typeName=" + typeName + ", valueId=" + valueId
+				+ ", valueName=" + valueName + ", createdBy=" + createdBy
+				+ ", creationDate=" + creationDate + ", modifyBy=" + modifyBy
+				+ ", modifyDate=" + modifyDate + "]";
 	}
 
 }

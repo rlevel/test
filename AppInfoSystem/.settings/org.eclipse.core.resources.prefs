@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/developer/appinfoadd.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/developer/appinfomodify.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/developer/appversionadd.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/developer/common/footer.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/developer/common/header.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/developer/common/js.jsp=UTF-8
 encoding//WebRoot/WEB-INF/jsp/developer/main.jsp=UTF-8
 encoding//WebRoot/statics/localjs/appinfoadd.js=UTF-8
 encoding//WebRoot/statics/localjs/appinfolist.js=UTF-8
+encoding//WebRoot/statics/localjs/appinfomodify.js=UTF-8

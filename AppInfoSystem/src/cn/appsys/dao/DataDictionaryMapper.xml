@@ -3,14 +3,14 @@
 <mapper namespace="cn.appsys.dao.DataDictionaryMapper" >
   <resultMap id="BaseResultMap" type="cn.appsys.pojo.DataDictionary" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="typeCode" property="typecode" jdbcType="VARCHAR" />
-    <result column="typeName" property="typename" jdbcType="VARCHAR" />
-    <result column="valueId" property="valueid" jdbcType="BIGINT" />
-    <result column="valueName" property="valuename" jdbcType="VARCHAR" />
-    <result column="createdBy" property="createdby" jdbcType="BIGINT" />
-    <result column="creationDate" property="creationdate" jdbcType="TIMESTAMP" />
-    <result column="modifyBy" property="modifyby" jdbcType="BIGINT" />
-    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="typeCode" property="typeCode" jdbcType="VARCHAR" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="valueId" property="valueId" jdbcType="BIGINT" />
+    <result column="valueName" property="valueName" jdbcType="VARCHAR" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="creationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="modifyBy" property="modifyBy" jdbcType="BIGINT" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, typeCode, typeName, valueId, valueName, createdBy, creationDate, modifyBy, modifyDate
@@ -30,9 +30,9 @@
       valueId, valueName, createdBy, 
       creationDate, modifyBy, modifyDate
       )
-    values (#{id,jdbcType=BIGINT}, #{typecode,jdbcType=VARCHAR}, #{typename,jdbcType=VARCHAR}, 
-      #{valueid,jdbcType=BIGINT}, #{valuename,jdbcType=VARCHAR}, #{createdby,jdbcType=BIGINT}, 
-      #{creationdate,jdbcType=TIMESTAMP}, #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=BIGINT}, #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{valueId,jdbcType=BIGINT}, #{valueName,jdbcType=VARCHAR}, #{createdBy,jdbcType=BIGINT}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.appsys.pojo.DataDictionary" >
@@ -41,28 +41,28 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="typecode != null" >
+      <if test="typeCode != null" >
         typeCode,
       </if>
-      <if test="typename != null" >
+      <if test="typeName != null" >
         typeName,
       </if>
-      <if test="valueid != null" >
+      <if test="valueId != null" >
         valueId,
       </if>
-      <if test="valuename != null" >
+      <if test="valueName != null" >
         valueName,
       </if>
-      <if test="createdby != null" >
+      <if test="createdBy != null" >
         createdBy,
       </if>
-      <if test="creationdate != null" >
+      <if test="creationDate != null" >
         creationDate,
       </if>
-      <if test="modifyby != null" >
+      <if test="modifyBy != null" >
         modifyBy,
       </if>
-      <if test="modifydate != null" >
+      <if test="modifyDate != null" >
         modifyDate,
       </if>
     </trim>
@@ -70,72 +70,72 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="typecode != null" >
-        #{typecode,jdbcType=VARCHAR},
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
       </if>
-      <if test="typename != null" >
-        #{typename,jdbcType=VARCHAR},
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
       </if>
-      <if test="valueid != null" >
-        #{valueid,jdbcType=BIGINT},
+      <if test="valueId != null" >
+        #{valueId,jdbcType=BIGINT},
       </if>
-      <if test="valuename != null" >
-        #{valuename,jdbcType=VARCHAR},
+      <if test="valueName != null" >
+        #{valueName,jdbcType=VARCHAR},
       </if>
-      <if test="createdby != null" >
-        #{createdby,jdbcType=BIGINT},
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
       </if>
-      <if test="creationdate != null" >
-        #{creationdate,jdbcType=TIMESTAMP},
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyby != null" >
-        #{modifyby,jdbcType=BIGINT},
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
       </if>
-      <if test="modifydate != null" >
-        #{modifydate,jdbcType=TIMESTAMP},
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.DataDictionary" >
     update data_dictionary
     <set >
-      <if test="typecode != null" >
-        typeCode = #{typecode,jdbcType=VARCHAR},
+      <if test="typeCode != null" >
+        typeCode = #{typeCode,jdbcType=VARCHAR},
       </if>
-      <if test="typename != null" >
-        typeName = #{typename,jdbcType=VARCHAR},
+      <if test="typeName != null" >
+        typeName = #{typeName,jdbcType=VARCHAR},
       </if>
-      <if test="valueid != null" >
-        valueId = #{valueid,jdbcType=BIGINT},
+      <if test="valueId != null" >
+        valueId = #{valueId,jdbcType=BIGINT},
       </if>
-      <if test="valuename != null" >
-        valueName = #{valuename,jdbcType=VARCHAR},
+      <if test="valueName != null" >
+        valueName = #{valueName,jdbcType=VARCHAR},
       </if>
-      <if test="createdby != null" >
-        createdBy = #{createdby,jdbcType=BIGINT},
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=BIGINT},
       </if>
-      <if test="creationdate != null" >
-        creationDate = #{creationdate,jdbcType=TIMESTAMP},
+      <if test="creationDate != null" >
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyby != null" >
-        modifyBy = #{modifyby,jdbcType=BIGINT},
+      <if test="modifyBy != null" >
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
       </if>
-      <if test="modifydate != null" >
-        modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.DataDictionary" >
     update data_dictionary
-    set typeCode = #{typecode,jdbcType=VARCHAR},
-      typeName = #{typename,jdbcType=VARCHAR},
-      valueId = #{valueid,jdbcType=BIGINT},
-      valueName = #{valuename,jdbcType=VARCHAR},
-      createdBy = #{createdby,jdbcType=BIGINT},
-      creationDate = #{creationdate,jdbcType=TIMESTAMP},
-      modifyBy = #{modifyby,jdbcType=BIGINT},
-      modifyDate = #{modifydate,jdbcType=TIMESTAMP}
+    set typeCode = #{typeCode,jdbcType=VARCHAR},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      valueId = #{valueId,jdbcType=BIGINT},
+      valueName = #{valueName,jdbcType=VARCHAR},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,4 +1,4 @@
-package cn.appsys.controller;
+package cn.appsys.controller.develop;
 
 import java.util.Map;
 
@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSON;
 @Controller
 @RequestMapping("devuser")
 @SessionAttributes({ "suser" })
-public class UserController {
+public class DevUserController {
 	@Autowired
 	private DevUserService devUserService;
 
@@ -31,7 +31,6 @@ public class UserController {
 			Map<String, Object> map, HttpSession session) {
 		ResultData rd = new ResultData();
 		rd = devUserService.selectDevUserByCode(devcode, devpassword);
-		// System.out.println(rd.getData());
 		if (rd.getFlag() == 0) {
 			map.put("suser", rd.getData());
 		}

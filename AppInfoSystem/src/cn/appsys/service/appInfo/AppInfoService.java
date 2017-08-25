@@ -18,6 +18,22 @@ public interface AppInfoService {
 	// 添加info基础信息
 	public ResultData addAppList(AppInfo appInfos);
 
-	// // 通过APK名称查找appInfo
-	public ResultData getAppInfo(Integer id, String APKName);
+	// 通过APK名称查找appInfo
+	public ResultData getAppInfo(Map<String, Object> map);
+
+	// 通过id查找appinfo
+	public ResultData getAppInfoById(Long id);
+
+	// 处理更新
+	public ResultData modify(AppInfo appInfo);
+
+	// 清除
+	public boolean deleteAppLogo(Long id);
+
+	// 删除
+	public boolean appsysdeleteAppById(Map<String, Object> map);
+
+	// 上架下架
+	public boolean appsysUpdataSaleStatusByAppId(AppInfo appInfo);
+
 }

@@ -3,7 +3,6 @@ package cn.appsys.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import cn.appsys.pojo.AppInfo;
@@ -31,6 +30,8 @@ public interface AppInfoMapper {
 	int getAppInfoCount(Map<String, Object> map);
 
 	// 通过APK名称查找appInfo
-	AppInfo getAppInfo(@Param(value = "id") Integer id,
-			@Param(value = "APKName") String APKName);
+	AppInfo getAppInfo(Map<String, Object> map);
+
+	// 删除
+	int delAppInfoById(Map<String, Object> map);
 }

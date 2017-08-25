@@ -15,7 +15,16 @@ public class AppCategoryServiceImpl implements AppCategoryService {
 	private AppCategoryMapper appCategoryMapper;
 
 	@Override
-	public ResultData getAppCategoriesByParentId(Integer parentid) {
+	public ResultData getAppCategoriesByParentId(Integer parentId) {
+		ResultData rd = new ResultData();
+		List<AppCategory> appCategories = appCategoryMapper
+				.getAppCategoriesByParentId(parentId);
+		rd.setData(appCategories);
+		return rd;
+	}
+
+	@Override
+	public ResultData getAppCategoriesByPid(Integer parentid) {
 		ResultData rd = new ResultData();
 		List<AppCategory> appCategories = appCategoryMapper
 				.getAppCategoriesByParentId(parentid);

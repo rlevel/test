@@ -1,5 +1,7 @@
 package cn.appsys.dao;
 
+import org.apache.ibatis.annotations.Select;
+
 import cn.appsys.pojo.BackendUser;
 
 public interface BackendUserMapper {
@@ -14,4 +16,7 @@ public interface BackendUserMapper {
 	int updateByPrimaryKeySelective(BackendUser record);
 
 	int updateByPrimaryKey(BackendUser record);
+
+	@Select("select * from backend_user where usercode=#{usercode}")
+	BackendUser selectDevUserByCode(String usercode);
 }

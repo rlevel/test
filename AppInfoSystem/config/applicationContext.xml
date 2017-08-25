@@ -63,12 +63,24 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-
+	<!-- 配置事物增强 -->
+	<!-- <tx:advice id="myAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="appsys*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice> -->
+	
+	
 	<!-- 声明使用注解式事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<!-- AOP 利用组件扫描，将切面组件纳入Spring容器。虽然可以通过编程的方式织入切面，
 		  但是一般情况下，我们还是使用spring的配置自动完成创建代理织入切面的工作 -->
 	<aop:aspectj-autoproxy/> 
+	<!-- <aop:config proxy-target-class="true">
+		<aop:pointcut expression="(*cn.appsys.service..*(..))" id="transService"/>
+		<aop:advisor advice-ref="myAdvice" pointcut-ref="transService"/>
+	</aop:config> -->
 
 
 	<!-- 开启组件扫描 -->
