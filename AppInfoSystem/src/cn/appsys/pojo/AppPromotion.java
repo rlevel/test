@@ -3,13 +3,13 @@ package cn.appsys.pojo;
 import java.util.Date;
 
 public class AppPromotion {
-	private Long id;
+	private Integer id;
 
-	private Long appid;
+	private Integer appid;
 
 	private String adpicpath;
 
-	private Long adpv;
+	private Integer adpv;
 
 	private Integer carouselposition;
 
@@ -17,29 +17,13 @@ public class AppPromotion {
 
 	private Date endtime;
 
-	private Long createdby;
+	private Integer createdby;
 
 	private Date creationdate;
 
-	private Long modifyby;
+	private Integer modifyby;
 
 	private Date modifydate;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getAppid() {
-		return appid;
-	}
-
-	public void setAppid(Long appid) {
-		this.appid = appid;
-	}
 
 	public String getAdpicpath() {
 		return adpicpath;
@@ -47,14 +31,6 @@ public class AppPromotion {
 
 	public void setAdpicpath(String adpicpath) {
 		this.adpicpath = adpicpath == null ? null : adpicpath.trim();
-	}
-
-	public Long getAdpv() {
-		return adpv;
-	}
-
-	public void setAdpv(Long adpv) {
-		this.adpv = adpv;
 	}
 
 	public Integer getCarouselposition() {
@@ -81,14 +57,6 @@ public class AppPromotion {
 		this.endtime = endtime;
 	}
 
-	public Long getCreatedby() {
-		return createdby;
-	}
-
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
-	}
-
 	public Date getCreationdate() {
 		return creationdate;
 	}
@@ -97,11 +65,43 @@ public class AppPromotion {
 		this.creationdate = creationdate;
 	}
 
-	public Long getModifyby() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getAppid() {
+		return appid;
+	}
+
+	public void setAppid(Integer appid) {
+		this.appid = appid;
+	}
+
+	public Integer getAdpv() {
+		return adpv;
+	}
+
+	public void setAdpv(Integer adpv) {
+		this.adpv = adpv;
+	}
+
+	public Integer getCreatedby() {
+		return createdby;
+	}
+
+	public void setCreatedby(Integer createdby) {
+		this.createdby = createdby;
+	}
+
+	public Integer getModifyby() {
 		return modifyby;
 	}
 
-	public void setModifyby(Long modifyby) {
+	public void setModifyby(Integer modifyby) {
 		this.modifyby = modifyby;
 	}
 
@@ -112,4 +112,15 @@ public class AppPromotion {
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
 	}
+
+	@Override
+	public String toString() {
+		return "AppPromotion [id=" + id + ", appid=" + appid + ", adpicpath="
+				+ adpicpath + ", adpv=" + adpv + ", carouselposition="
+				+ carouselposition + ", starttime=" + starttime + ", endtime="
+				+ endtime + ", createdby=" + createdby + ", creationdate="
+				+ creationdate + ", modifyby=" + modifyby + ", modifydate="
+				+ modifydate + "]";
+	}
+
 }

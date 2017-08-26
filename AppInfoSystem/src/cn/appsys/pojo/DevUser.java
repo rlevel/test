@@ -6,7 +6,7 @@ import java.util.Date;
 public class DevUser implements Serializable {
 	private static final long serialVersionUID = -2550259689783373675L;
 
-	private Long id;
+	private Integer id;
 
 	private String devcode;
 
@@ -18,21 +18,13 @@ public class DevUser implements Serializable {
 
 	private String devinfo;
 
-	private Long createdby;
+	private Integer createdby;
 
 	private Date creationdate;
 
-	private Long modifyby;
+	private Integer modifyby;
 
 	private Date modifydate;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getDevcode() {
 		return devcode;
@@ -74,14 +66,6 @@ public class DevUser implements Serializable {
 		this.devinfo = devinfo == null ? null : devinfo.trim();
 	}
 
-	public Long getCreatedby() {
-		return createdby;
-	}
-
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
-	}
-
 	public Date getCreationdate() {
 		return creationdate;
 	}
@@ -90,11 +74,27 @@ public class DevUser implements Serializable {
 		this.creationdate = creationdate;
 	}
 
-	public Long getModifyby() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getCreatedby() {
+		return createdby;
+	}
+
+	public void setCreatedby(Integer createdby) {
+		this.createdby = createdby;
+	}
+
+	public Integer getModifyby() {
 		return modifyby;
 	}
 
-	public void setModifyby(Long modifyby) {
+	public void setModifyby(Integer modifyby) {
 		this.modifyby = modifyby;
 	}
 

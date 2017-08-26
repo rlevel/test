@@ -13,12 +13,12 @@ public class BacUserServiceImpl implements BacUserService {
 	private BackendUserMapper backendUserMapper;
 
 	@Override
-	public ResultData selectDevUserByCode(String devcode, String devpassword) {
+	public ResultData selectDevUserByCode(String usercode, String userpassword) {
 		ResultData rd = new ResultData();
-		if (devcode != null && devcode != "") {
-			BackendUser user = backendUserMapper.selectDevUserByCode(devcode);
+		if (usercode != null && usercode != "") {
+			BackendUser user = backendUserMapper.selectBacUserByCode(usercode);
 			if (user != null) {
-				if (user.getUserpassword().equals(devpassword)) {
+				if (user.getUserpassword().equals(userpassword)) {
 					rd.setFlag(0);
 					rd.setMsg("µÇÂ¼³É¹¦");
 					rd.setData(user);

@@ -8,13 +8,13 @@ import org.apache.ibatis.annotations.Select;
 import cn.appsys.pojo.AppInfo;
 
 public interface AppInfoMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(AppInfo record);
 
 	int insertSelective(AppInfo record);
 
-	AppInfo selectByPrimaryKey(Long id);
+	AppInfo selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(AppInfo record);
 
@@ -30,8 +30,10 @@ public interface AppInfoMapper {
 	int getAppInfoCount(Map<String, Object> map);
 
 	// 通过APK名称查找appInfo
-	AppInfo getAppInfo(Map<String, Object> map);
+	AppInfo getAppInfoByAPK(Map<String, Object> map);
 
 	// 删除
 	int delAppInfoById(Map<String, Object> map);
+
+	// AppInfo getAppInfoById(Map<String, Object> map);
 }

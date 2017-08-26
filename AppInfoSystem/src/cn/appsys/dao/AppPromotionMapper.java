@@ -3,13 +3,13 @@ package cn.appsys.dao;
 import cn.appsys.pojo.AppPromotion;
 
 public interface AppPromotionMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(AppPromotion record);
 
 	int insertSelective(AppPromotion record);
 
-	AppPromotion selectByPrimaryKey(Long id);
+	AppPromotion selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(AppPromotion record);
 

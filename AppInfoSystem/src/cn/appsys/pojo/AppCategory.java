@@ -11,11 +11,11 @@ public class AppCategory {
 
 	private Integer parentId;
 
-	private Long createdBy;
+	private Integer createdBy;
 
 	private Date creationTime;
 
-	private Long modifyBy;
+	private Integer modifyBy;
 
 	private Date modifyDate;
 
@@ -51,14 +51,6 @@ public class AppCategory {
 		this.parentId = parentId;
 	}
 
-	public Long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Long createdBy) {
-		this.createdBy = createdBy;
-	}
-
 	public Date getCreationTime() {
 		return creationTime;
 	}
@@ -67,20 +59,28 @@ public class AppCategory {
 		this.creationTime = creationTime;
 	}
 
-	public Long getModifyBy() {
-		return modifyBy;
-	}
-
-	public void setModifyBy(Long modifyBy) {
-		this.modifyBy = modifyBy;
-	}
-
 	public Date getModifyDate() {
 		return modifyDate;
 	}
 
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getModifyBy() {
+		return modifyBy;
+	}
+
+	public void setModifyBy(Integer modifyBy) {
+		this.modifyBy = modifyBy;
 	}
 
 	@Override

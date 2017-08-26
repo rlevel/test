@@ -5,13 +5,13 @@ import org.apache.ibatis.annotations.Select;
 import cn.appsys.pojo.DevUser;
 
 public interface DevUserMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(DevUser record);
 
 	int insertSelective(DevUser record);
 
-	DevUser selectByPrimaryKey(Long id);
+	DevUser selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(DevUser record);
 

@@ -13,7 +13,7 @@ public interface appVersionService {
 
 	public ResultData getAppVersionById(Map<String, Object> map);
 
-	public boolean deleteApkFile(Long id);
+	public boolean deleteApkFile(Integer id);
 
 	public ResultData updateAppVersion(AppVersion appVersion);
 

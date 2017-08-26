@@ -19,7 +19,7 @@ import com.alibaba.fastjson.JSON;
 
 @Controller
 @RequestMapping("bacuser")
-@SessionAttributes({ "suser" })
+@SessionAttributes({ "buser" })
 public class BacUserController {
 	@Autowired
 	private BacUserService bacUserService;
@@ -29,11 +29,13 @@ public class BacUserController {
 	@ResponseBody
 	public String isLogin(String usercode, String userpassword,
 			Map<String, Object> map, HttpSession session) {
+		// System.out.println(usercode + userpassword);
 		ResultData rd = new ResultData();
 		rd = bacUserService.selectDevUserByCode(usercode, userpassword);
 		if (rd.getFlag() == 0) {
-			map.put("suser", rd.getData());
+			map.put("buser", rd.getData());
 		}
+		// System.out.println(rd.getData());
 		String json = JSON.toJSONString(rd);
 		session.setAttribute(Contants.USER_SESSION, rd.getData());
 		// System.out.println(json);

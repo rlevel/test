@@ -5,18 +5,18 @@ import org.apache.ibatis.annotations.Select;
 import cn.appsys.pojo.BackendUser;
 
 public interface BackendUserMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(BackendUser record);
 
 	int insertSelective(BackendUser record);
 
-	BackendUser selectByPrimaryKey(Long id);
+	BackendUser selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(BackendUser record);
 
 	int updateByPrimaryKey(BackendUser record);
 
 	@Select("select * from backend_user where usercode=#{usercode}")
-	BackendUser selectDevUserByCode(String usercode);
+	BackendUser selectBacUserByCode(String usercode);
 }

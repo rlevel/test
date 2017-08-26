@@ -28,16 +28,19 @@
 <!-- NProgress -->
 <link href="${path }/vendors/nprogress/nprogress.css" rel="stylesheet">
 <!-- iCheck -->
-<link href="${path }/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+<link href="${path }/vendors/iCheck/skins/flat/green.css"
+	rel="stylesheet">
 
 <!-- bootstrap-progressbar -->
 <link
 	href="${path }/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
 	rel="stylesheet">
 <!-- JQVMap -->
-<link href="${path }/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+<link href="${path }/vendors/jqvmap/dist/jqvmap.min.css"
+	rel="stylesheet" />
 <!-- bootstrap-daterangepicker -->
-<link href="${path }/vendors/bootstrap-daterangepicker/daterangepicker.css"
+<link
+	href="${path }/vendors/bootstrap-daterangepicker/daterangepicker.css"
 	rel="stylesheet">
 
 <!-- Custom Theme Style -->
@@ -62,7 +65,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${suser.usercode}</h2>
+							<h2>${userSession.usercode}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -73,7 +76,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${suser.username}</h3>
+							<h3>${userSession.username}</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i> APP管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -88,9 +91,9 @@
 									</ul></li>
 								<li><a><i class="fa fa-edit"></i> APP应用管理 <span
 										class="fa fa-chevron-down"></span></a>
-								<ul class="nav child_menu">
+									<ul class="nav child_menu">
 										<li><a href="${path}/appInfo/appInfoList">APP维护</a></li>
-								</ul></li>
+									</ul></li>
 							</ul>
 						</div>
 
@@ -125,7 +128,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img src="images/img.jpg" alt="">${suser.username}
+								aria-expanded="false"> <img
+									src="${path}/statics/images/IMG_5503.jpg" alt="">${userSession.username}
 									<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">

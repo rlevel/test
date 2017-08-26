@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Select;
 import cn.appsys.pojo.DataDictionary;
 
 public interface DataDictionaryMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(DataDictionary record);
 
 	int insertSelective(DataDictionary record);
 
-	DataDictionary selectByPrimaryKey(Long id);
+	DataDictionary selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(DataDictionary record);
 

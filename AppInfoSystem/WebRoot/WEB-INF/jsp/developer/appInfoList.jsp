@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理维护 <small>${devUserSession.devname},属性名不匹配</small>
+						APP信息管理维护 <small>${devUserSession.devname},上下架不刷新</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -34,7 +34,7 @@
 										for="first-name">软件名称 </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input type="text" id="querysoftwareName"
-											name="querysoftwareName" value="${querysoftwareName}"
+											name="querysoftwareName" value="${querysoftwareName==null?'':querysoftwareName}"
 											class="form-control col-md-7 col-xs-12">
 									</div>
 								</div></li>
@@ -49,7 +49,7 @@
 											<c:forEach items="${statusList}" var="dataDic">
 												<option
 													<c:if test="${dataDic.valueId==querystatus}">selected="selected"</c:if>
-													value="${dataDic.valueId}">${dataDic.valueName}</option>
+													value="${dataDic.valueId}">${dataDic.valueName==null?"":dataDic.valueName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -66,7 +66,7 @@
 											<c:forEach items="${flatFormList}" var="dataDic">
 												<option
 													<c:if test="${dataDic.valueId==queryflatformId}">selected="selected"</c:if>
-													value="${dataDic.valueId}">${dataDic.valueName}</option>
+													value="${dataDic.valueId}">${dataDic.valueName==null?"":dataDic.valueName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -84,7 +84,7 @@
 											<c:forEach items="${categorylevel1List}" var="appCa">
 												<option
 													<c:if test="${appCa.id==querycategoryLevel1}">selected="selected"</c:if>
-													value="${appCa.id}">${appCa.categoryName}</option>
+													value="${appCa.id}">${appCa.categoryName==null?"":appCa.categoryName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -101,7 +101,7 @@
 											<c:forEach items="${result.data}" var="appCa">
 												<option
 													<c:if test="${appCa.id==querycategoryLevel2}">selected="selected"</c:if>
-													value="${appCa.id}">${appCa.categoryName}</option>
+													value="${appCa.id}">${appCa.categoryName==null?"":appCa.categoryName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -118,7 +118,7 @@
 											<c:forEach items="${result.data}" var="appCa">
 												<option
 													<c:if test="${appCa.id==querycategoryLevel3}">selected="selected"</c:if>
-													value="${appCa.id}">${appCa.categoryName}</option>
+													value="${appCa.id}">${appCa.categoryName==null?"":appCa.categoryName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -183,7 +183,7 @@
 										rowspan="1" colspan="1" style="width: 200px;"
 										aria-label="Position: activate to sort column ascending">APK名称</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 90px;"
+										rowspan="1" colspan="1" style="width: 80px;"
 										aria-label="Office: activate to sort column ascending">软件大小(单位:M)</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
 										rowspan="1" colspan="1" style="width: 50px;"
@@ -196,7 +196,7 @@
 										rowspan="1" colspan="1" style="width: 80px;"
 										aria-label="Salary: activate to sort column ascending">状态</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 86px;"
+										rowspan="1" colspan="1" style="width: 60px;"
 										aria-label="Salary: activate to sort column ascending">下载次数
 									</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
@@ -204,7 +204,7 @@
 										aria-label="Salary: activate to sort column ascending">最新版本号
 									</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 130px;"
+										rowspan="1" colspan="1" style="width: 150px;"
 										aria-label="Salary: activate to sort column ascending">操作
 									</th>
 								</tr>
@@ -220,7 +220,7 @@
 										<td>
 											${appinfo.categorylevel1Name}-->${appinfo.categorylevel2Name}-->${appinfo.categorylevel3Name}
 										</td>
-										<td><span id="appInfoStatus${appInfo.id}">${appinfo.statusName}</span></td>
+										<td><span id="appInfoStatus${appinfo.id}">${appinfo.statusName}</span></td>
 										<td>${appinfo.downloads}</td>
 										<td>${appinfo.versionNo}</td>
 										<td>
@@ -237,6 +237,7 @@
 															<c:when test="${appinfo.status==2 || appinfo.status==5}">
 																<a class="saleSwichOpen" saleSwitch="open"
 																appinfoid="${appinfo.id}"
+																status="${appinfo.status}"
 																appsoftwarename=${appinfo.softwareName } data-toggle="tooltip"
 																title="恭喜,您的审核已经通过,您可以点击上架发布您的APP"
 																 href="#">上架</a>
@@ -244,6 +245,7 @@
 															<c:when test="${appinfo.status==4 || appinfo.status==5}">
 																<a id="saleSwichClose" href="#"	class="saleSwichClose" saleSwitch="close"
 																appinfoid="${appinfo.id}"
+																status="${appinfo.status}"
 																appsoftwarename=${appinfo.softwareName } data-toggle="tooltip"
 																title="您可以点击下架来停止发布您的APP,市场将不提供APP的下载"
 																>下架</a>
@@ -266,19 +268,24 @@
 													<li class="divider"></li>
 													
 													<li>
+													<!-- class="modifyAppinfo" -->
 													<a href="${path}/appInfo/jumpmodify/${appinfo.id}" appinfoid="${appinfo.id}"
 													status="${appinfo.status}"
 													statusName="${appinfo.statusName}"
 													data-toggle="tooltip"
-														data-placement="top" title="新增APP版本信息"> <span
+														data-placement="top" title="修改APP版本信息"> <span
 															class="glyphicon glyphicon-cog modifyAppinfo"
 															aria-hidden="true"></span>修改
 													</a></li>
-													<li><a class="viewApp" appinfoid="${appinfo.id}" href="#" data-toggle="tooltip"
+													<li><a class="viewApp"
+													 versionid="${appinfo.versionId }"
+													status="${appinfo.status }"
+													statusname="${appinfo.statusName }"
+													 appinfoid="${appinfo.id}" href="#" data-toggle="tooltip"
 														data-placement="top" title="查看APP基础信息以及全部版本信息"> <span
 															class="glyphicon glyphicon-cog" aria-hidden="true"></span>查看
 													</a></li>
-													<li><a class="deleteApp" appinfoid="${appinfo.id}" 
+													<li><a class="deleteApp" appinfoid="${appinfo.id}"
 														appsoftweraName="${appinfo.softwareName }"
 														href="#" data-toggle="tooltip"
 														data-placement="top" title="删除APP基础信息以及全部版本信息"> <span

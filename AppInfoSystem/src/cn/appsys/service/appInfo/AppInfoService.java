@@ -22,13 +22,15 @@ public interface AppInfoService {
 	public ResultData getAppInfo(Map<String, Object> map);
 
 	// 通过id查找appinfo
-	public ResultData getAppInfoById(Long id);
+	public ResultData getAppInfoById(Integer id);
+
+	// public ResultData getAppById(Map<String, Object> map);
 
 	// 处理更新
 	public ResultData modify(AppInfo appInfo);
 
 	// 清除
-	public boolean deleteAppLogo(Long id);
+	public boolean deleteAppLogo(Integer id);
 
 	// 删除
 	public boolean appsysdeleteAppById(Map<String, Object> map);

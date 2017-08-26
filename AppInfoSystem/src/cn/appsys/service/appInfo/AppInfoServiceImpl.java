@@ -63,7 +63,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 	@Override
 	public ResultData getAppInfo(Map<String, Object> map) {
 		ResultData rd = new ResultData();
-		AppInfo app = appInfoMapper.getAppInfo(map);
+		AppInfo app = appInfoMapper.getAppInfoByAPK(map);
 		if (app != null) {
 			rd.setFlag(1);
 			rd.setData(app);
@@ -74,7 +74,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 	}
 
 	@Override
-	public ResultData getAppInfoById(Long id) {
+	public ResultData getAppInfoById(Integer id) {
 		ResultData rd = new ResultData();
 		AppInfo apps = appInfoMapper.selectByPrimaryKey(id);
 		rd.setData(apps);
@@ -96,7 +96,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 	}
 
 	@Override
-	public boolean deleteAppLogo(Long id) {
+	public boolean deleteAppLogo(Integer id) {
 		AppInfo appInfo = appInfoMapper.selectByPrimaryKey(id);
 		if (appInfo != null) {
 			appInfo.setLogoLocPath(null);
@@ -136,7 +136,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 		}
 		// 删除APP基础信息
 		// 删除上传的图片
-		AppInfo appInfo = appInfoMapper.getAppInfo(map);
+		AppInfo appInfo = appInfoMapper.getAppInfoByAPK(map);
 		if (appInfo.getLogoLocPath() != null
 				&& !("").equals(appInfo.getLogoLocPath())) {
 			File file = new File(appInfo.getLogoLocPath());
@@ -163,9 +163,9 @@ public class AppInfoServiceImpl implements AppInfoService {
 	public boolean appsysUpdataSaleStatusByAppId(AppInfo appInfoObj) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", appInfoObj.getId());
-		AppInfo appInfo = appInfoMapper.getAppInfo(map);
+		AppInfo appInfo = appInfoMapper.getAppInfoByAPK(map);
 		System.out.println(appInfo);
-		Long operator = appInfoObj.getModifyBy();
+		Integer operator = appInfoObj.getModifyBy();
 		if (operator < 0 || appInfoObj.getId() < 0) {
 			try {
 				throw Exception;
@@ -179,13 +179,13 @@ public class AppInfoServiceImpl implements AppInfoService {
 		} else {
 			switch (appInfo.getStatus().intValue()) {
 			case 2:// 审核通过,可以上架
-				onSale(appInfo, operator, 4L, 2L);
+				onSale(appInfo, operator, 4, 2);
 				break;
 			case 5:// 已下架,可以上架
-				onSale(appInfo, operator, 4L, 2L);
+				onSale(appInfo, operator, 4, 2);
 				break;
 			case 4:// 已上架,进行下架
-				offSale(appInfo, operator, 5L);
+				offSale(appInfo, operator, 5);
 				break;
 			default:
 				return false;
@@ -202,8 +202,8 @@ public class AppInfoServiceImpl implements AppInfoService {
 	 * @param appInfStatus
 	 * @param versionStatus
 	 */
-	private void onSale(AppInfo appInfo, Long operator, Long appInfStatus,
-			Long versionStatus) {
+	private void onSale(AppInfo appInfo, Integer operator,
+			Integer appInfStatus, Integer versionStatus) {
 		offSale(appInfo, operator, appInfStatus);
 		setSaleSwitchToAppVersion(appInfo, operator, versionStatus);
 	}
@@ -216,7 +216,8 @@ public class AppInfoServiceImpl implements AppInfoService {
 	 * @param appInfStatus
 	 * @return
 	 */
-	private boolean offSale(AppInfo appInfo, Long operator, Long appInfStatus) {
+	private boolean offSale(AppInfo appInfo, Integer operator,
+			Integer appInfStatus) {
 		AppInfo _appInfo = new AppInfo();
 		_appInfo.setId(appInfo.getId());
 		_appInfo.setStatus(appInfStatus);
@@ -234,14 +235,23 @@ public class AppInfoServiceImpl implements AppInfoService {
 	 * @param saleStatus
 	 * @return
 	 */
-	private boolean setSaleSwitchToAppVersion(AppInfo appInfo, Long operator,
-			Long saleStatus) {
+	private boolean setSaleSwitchToAppVersion(AppInfo appInfo,
+			Integer operator, Integer saleStatus) {
 		AppVersion appVersion = new AppVersion();
 		appVersion.setId(appInfo.getVersionId());
-		appVersion.setpublishStatus(saleStatus);
-		appVersion.setmodifyBy(operator);
-		appVersion.setmodifyDate(new Date(System.currentTimeMillis()));
+		appVersion.setPublishStatus(saleStatus);
+		appVersion.setModifyBy(operator);
+		appVersion.setModifyDate(new Date(System.currentTimeMillis()));
 		appVersionMapper.updateByPrimaryKeySelective(appVersion);
 		return false;
 	}
+
+	// @Override
+	// public ResultData getAppById(Map<String, Object> map) {
+	// ResultData rd = new ResultData();
+	// AppInfo apps = appInfoMapper.getAppInfoById(map);
+	// rd.setData(apps);
+	// return rd;
+	//
+	// }
 }

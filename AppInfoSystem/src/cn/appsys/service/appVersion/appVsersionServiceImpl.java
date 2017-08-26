@@ -46,7 +46,7 @@ public class appVsersionServiceImpl implements appVersionService {
 	}
 
 	@Override
-	public boolean deleteApkFile(Long id) {
+	public boolean deleteApkFile(Integer id) {
 		AppVersion appVersion = appVersionMapper.selectByPrimaryKey(id);
 		if (appVersion != null) {
 			appVersion.setApkFileName(null);

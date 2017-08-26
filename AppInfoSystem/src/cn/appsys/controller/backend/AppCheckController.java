@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.appsys.pojo.AppCategory;
 import cn.appsys.pojo.AppInfo;
+import cn.appsys.pojo.AppVersion;
 import cn.appsys.pojo.BackendUser;
 import cn.appsys.pojo.DataDictionary;
 import cn.appsys.service.appCategory.AppCategoryService;
@@ -63,8 +64,8 @@ public class AppCheckController {
 		// System.out.println("平台" + _queryflatformId);
 		// System.out.println("点击次数" + pageIndex);
 		// 登录保存constants类到session
-		Long devId = ((BackendUser) session.getAttribute(Contants.USER_SESSION))
-				.getId();
+		Integer devId = ((BackendUser) session
+				.getAttribute(Contants.USER_SESSION)).getId();
 		// System.out.println("_querycategoryLevel2" + _querycategoryLevel2);
 		// System.out.println("_querycategoryLevel3" + _querycategoryLevel3);
 		// System.out.println("_queryflatformId" + _queryflatformId);
@@ -117,7 +118,7 @@ public class AppCheckController {
 		}
 		Map<String, Object> maps = new HashMap<String, Object>();
 		maps.put("softwareName", querysoftwareName);
-		maps.put("status", querystatus);
+		maps.put("status", 1);
 		maps.put("categoryLevel1", querycategoryLevel1);
 		maps.put("categoryLevel2", querycategoryLevel2);
 		maps.put("categoryLevel3", querycategoryLevel3);
@@ -215,5 +216,90 @@ public class AppCheckController {
 		String json = JSON.toJSONString(rd);
 		// System.out.println(json);
 		return json;
+	}
+
+	/**
+	 * 查看APP基础信息和所有版本信息
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+
+	@RequestMapping(value = "appview", method = RequestMethod.GET)
+	public String view(
+			@RequestParam(value = "id") Integer id,
+			@RequestParam(value = "vid") String versionId,
+			@RequestParam(value = "aid") String appId,
+			@RequestParam(value = "error", required = false) String fileUploadError,
+			Model model) {
+		// System.out.println(id);
+		// System.out.println(versionId);
+		// System.out.println(appId);
+		// System.out.println("跳转到查看页面");
+		AppVersion appVersion = null;
+		List<AppVersion> appVersionList = null;
+
+		if (null != fileUploadError && ("error1").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_1;
+		} else if (null != fileUploadError
+				&& ("error2").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_2;
+		} else if (null != fileUploadError
+				&& ("error3").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_3;
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("appId", Integer.parseInt(appId));
+		map.put("id", Integer.parseInt(versionId));
+		// appVersion.setappId(Long.parseLong(appId));
+		appVersion = (AppVersion) appVersionService.getAppVersionById(map)
+				.getData();
+		appVersionList = (List<AppVersion>) appVersionService
+				.getAppVersionList(map).getData();
+		// System.out.println("appVersion" + appVersion);
+
+		model.addAttribute(appVersion);
+		model.addAttribute("appVersionList", appVersionList);
+
+		// System.out.println("appid" + id);
+		// System.out.println("id" + id);
+		AppInfo appInfo = null;
+		Map<String, Object> infos = new HashMap<String, Object>();
+		infos.put("id", id);
+		appInfo = (AppInfo) appInfoService.getAppInfo(infos).getData();
+		List<DataDictionary> flatFormList = this
+				.getDataDictionaryList("APP_FLATFORM");
+		// 三个级别的分类列表,获取一级分类,二三级
+		ResultData lev = appCategoryService.getAppCategoriesByParentId(null);
+		List<AppCategory> categorylevel1List = (List<AppCategory>) lev
+				.getData();
+		List<AppCategory> categorylevel2List = null;
+		List<AppCategory> categorylevel3List = null;
+
+		model.addAttribute(appInfo);
+		model.addAttribute("flatFormList", flatFormList);
+		model.addAttribute("categorylevel1List", categorylevel1List);
+		return "backend/appinfoview";
+	}
+
+	@RequestMapping(value = "appinfocheck", method = RequestMethod.POST)
+	public String checkstatus(@RequestParam(value = "id") String id,
+			@RequestParam(value = "statuss") String status,
+			Map<String, Object> map) {
+		// System.out.println(appId);
+		System.out.println("status" + status);
+		AppInfo apps = (AppInfo) appInfoService.getAppInfoById(
+				Integer.valueOf(id)).getData();
+		if (apps != null) {
+			apps.setStatus(Integer.valueOf(status));
+			ResultData rd = appInfoService.modify(apps);
+			if (rd.getFlag() == 0) {
+				return "redirect:/check/appInfoList";
+			} else {
+				return "appinfoview";
+			}
+		}
+		return "appinfoview";
 	}
 }

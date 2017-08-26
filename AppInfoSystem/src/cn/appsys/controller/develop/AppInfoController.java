@@ -74,8 +74,9 @@ public class AppInfoController {
 		// System.out.println("平台" + _queryflatformId);
 		// System.out.println("点击次数" + pageIndex);
 		// 登录保存constants类到session
-		Long devId = ((DevUser) session.getAttribute(Contants.DEV_USER_SESSION))
-				.getId();
+		Integer devId = ((DevUser) session
+				.getAttribute(Contants.DEV_USER_SESSION)).getId();
+		// System.out.println(devId);
 		// System.out.println("_querycategoryLevel2" + _querycategoryLevel2);
 		// System.out.println("_querycategoryLevel3" + _querycategoryLevel3);
 		// System.out.println("_queryflatformId" + _queryflatformId);
@@ -122,9 +123,9 @@ public class AppInfoController {
 		if (_querycategoryLevel3 != null && !"".equals(_querycategoryLevel3)) {
 			querycategoryLevel3 = Integer.valueOf(_querycategoryLevel3);
 		}
-		Integer queryflatformId = null;
+		Long queryflatformId = null;
 		if (_queryflatformId != null && !"".equals(_queryflatformId)) {
-			queryflatformId = Integer.valueOf(_queryflatformId);
+			queryflatformId = Long.parseLong(_queryflatformId);
 		}
 		Map<String, Object> maps = new HashMap<String, Object>();
 		maps.put("softwareName", querysoftwareName);
@@ -265,13 +266,13 @@ public class AppInfoController {
 	@ResponseBody
 	public String apkNameIsExit(@RequestParam String APKName,
 			Map<String, Object> resultMap) {
-		System.out.println(APKName);
+		// System.out.println(APKName);
 		ResultData rd = new ResultData();
 		Map<String, Object> apkn = new HashMap<String, Object>();
 		apkn.put("id", null);
 		apkn.put("APKName", APKName);
 		rd = appInfoService.getAppInfo(apkn);
-		System.out.println(rd);
+		// System.out.println(rd);
 		String json = JSON.toJSONString(rd);
 		return json;
 	}
@@ -283,7 +284,7 @@ public class AppInfoController {
 			HttpSession session,
 			HttpServletRequest request,
 			@RequestParam(value = "a_logoPicPath", required = false) MultipartFile attach) {
-		System.out.println(1);
+		// System.out.println(1);
 		String logoPicPath = null;
 		String logoLocPath = null;
 		if (!attach.isEmpty()) {
@@ -330,7 +331,7 @@ public class AppInfoController {
 		appInfo.setLogoLocPath(logoLocPath);
 		appInfo.setDevId(((DevUser) session
 				.getAttribute(Contants.DEV_USER_SESSION)).getId());
-		appInfo.setStatus(1L);
+		appInfo.setStatus(1);
 		ResultData rd = appInfoService.addAppList(appInfo);
 		if (rd.getFlag() == 0) {
 			return "redirect:/appInfo/appInfoList";
@@ -343,7 +344,7 @@ public class AppInfoController {
 	// 跳转到更新页面,实现回显
 	@RequestMapping(value = "jumpmodify/{id}", method = RequestMethod.GET)
 	public String modify(@PathVariable Long id, Model model) {
-		System.out.println("id" + id);
+		// System.out.println("id" + id);
 		AppInfo appInfo = null;
 		Map<String, Object> infos = new HashMap<String, Object>();
 		infos.put("id", id);
@@ -379,7 +380,7 @@ public class AppInfoController {
 			HttpServletRequest request,
 			@RequestParam(value = "attach", required = false) MultipartFile attach) {
 
-		System.out.println(1);
+		// System.out.println(1);
 		String logoPicPath = null;
 		String logoLocPath = null;
 		String APKName = appInfo.getAPKName();
@@ -458,7 +459,7 @@ public class AppInfoController {
 			fileLocPath = appinfo.getLogoLocPath();
 			File file = new File(fileLocPath);
 			if (file.delete()) {
-				if (appInfoService.deleteAppLogo(Long.parseLong(id))) {
+				if (appInfoService.deleteAppLogo(Integer.parseInt(id))) {
 					resultMap.put("result", "success");
 				}
 			}
@@ -468,7 +469,7 @@ public class AppInfoController {
 			fileLocPath = appinfo.getLogoLocPath();
 			File file = new File(fileLocPath);
 			if (file.delete()) {
-				if (appVersionService.deleteApkFile(Long.parseLong(id))) {
+				if (appVersionService.deleteApkFile(Integer.parseInt(id))) {
 					resultMap.put("result", "success");
 				}
 			}
@@ -480,13 +481,13 @@ public class AppInfoController {
 	@RequestMapping(value = "appversionadd", method = RequestMethod.GET)
 	public String addVersion(@RequestParam(value = "id") String appId,
 			AppVersion appVersion, Model model) {
-		System.out.println("APPID+" + appId);
+		// System.out.println("APPID+" + appId);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("appId", Long.parseLong(appId));
-		appVersion.setappId(Long.parseLong(appId));
+		appVersion.setAppId(Integer.parseInt(appId));
 		List<AppVersion> appVersionList = (List<AppVersion>) appVersionService
 				.getAppVersionList(map).getData();
-		System.out.println(appVersionList);
+		// System.out.println(appVersionList);
 		model.addAttribute("appVersionList", appVersionList);
 		model.addAttribute(appVersion);
 		return "developer/appversionadd";
@@ -507,7 +508,7 @@ public class AppInfoController {
 			HttpSession session,
 			HttpServletRequest request,
 			@RequestParam(value = "a_downloadLink", required = false) MultipartFile attach) {
-		System.out.println(1);
+		// System.out.println(1);
 		String downloadLink = null;
 		String apkLocPath = null;
 		String apkFileName = null;
@@ -520,14 +521,14 @@ public class AppInfoController {
 			if (prefix.equalsIgnoreCase("apk")) {
 				String apkName = null;
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("verid", appVersion.getappId());
+				map.put("verid", appVersion.getAppId());
 				apkName = ((AppVersion) appInfoService.getAppInfo(map)
-						.getData()).getapkName();
+						.getData()).getApkName();
 				if (apkName != null || "".equals(apkName)) {
 					return "redirect:/appInfo/appversionadd?id="
-							+ appVersion.getappId() + "&error=error1";
+							+ appVersion.getAppId() + "&error=error1";
 				}
-				apkFileName = apkName + "-" + appVersion.getversionNo()
+				apkFileName = apkName + "-" + appVersion.getVersionNo()
 						+ ".apk";
 				File targerFile = new File(path, apkFileName);
 				if (!targerFile.exists()) {
@@ -550,15 +551,15 @@ public class AppInfoController {
 		}
 		appVersion.setCreatedBy(((DevUser) session
 				.getAttribute(Contants.DEV_USER_SESSION)).getId());
-		appVersion.setcreationDate(new Date());
-		appVersion.setdownloadLink(downloadLink);
+		appVersion.setCreationDate(new Date());
+		appVersion.setDownloadLink(downloadLink);
 		appVersion.setApkLocPath(apkLocPath);
 		appVersion.setApkFileName(apkFileName);
 		ResultData rd = appVersionService.appsysadd(appVersion);
 		if (rd.getFlag() == 0) {
 			return "redirect:/appInfo/appInfoList";
 		} else {
-			return "developer/appversionadd?id=" + appVersion.getappId();
+			return "developer/appversionadd?id=" + appVersion.getAppId();
 		}
 
 	}
@@ -578,7 +579,7 @@ public class AppInfoController {
 			@RequestParam("aid") String appId,
 			@RequestParam(value = "error", required = false) String fileUploadError,
 			Model model) {
-		System.out.println("跳转到更新页面");
+		System.out.println("跳转到查看页面");
 		AppVersion appVersion = null;
 		List<AppVersion> appVersionList = null;
 
@@ -599,7 +600,7 @@ public class AppInfoController {
 				.getData();
 		appVersionList = (List<AppVersion>) appVersionService
 				.getAppVersionList(map).getData();
-		System.out.println("appVersion" + appVersion);
+		// System.out.println("appVersion" + appVersion);
 
 		model.addAttribute(appVersion);
 		model.addAttribute("appVersionList", appVersionList);
@@ -623,7 +624,7 @@ public class AppInfoController {
 			HttpServletRequest request,
 			@RequestParam(value = "attach", required = false) MultipartFile attach) {
 
-		System.out.println(1);
+		// System.out.println(1);
 		String downloadLink = null;
 		String apkLocPath = null;
 		String apkFileName = null;
@@ -636,16 +637,16 @@ public class AppInfoController {
 
 			if (prefix.equalsIgnoreCase("apk")) {
 				String apkName = null;
-				System.out.println(111111111);
+				// System.out.println(111111111);
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("verid", appVersion.getappId());
+				map.put("verid", appVersion.getAppId());
 				apkName = ((AppVersion) appInfoService.getAppInfo(map)
-						.getData()).getapkName();
+						.getData()).getApkName();
 				if (apkName != null || "".equals(apkName)) {
 					return "redirect:/appInfo/appversionadd?id="
-							+ appVersion.getappId() + "&error=error1";
+							+ appVersion.getAppId() + "&error=error1";
 				}
-				apkFileName = apkName + "-" + appVersion.getversionNo()
+				apkFileName = apkName + "-" + appVersion.getVersionNo()
 						+ ".apk";
 				File targerFile = new File(path, apkFileName);
 				if (!targerFile.exists()) {
@@ -666,10 +667,10 @@ public class AppInfoController {
 						+ "&error=error3";
 			}
 		}
-		appVersion.setmodifyBy(((DevUser) session
+		appVersion.setModifyBy(((DevUser) session
 				.getAttribute(Contants.DEV_USER_SESSION)).getId());
-		appVersion.setmodifyDate(new Date());
-		appVersion.setdownloadLink(downloadLink);
+		appVersion.setModifyDate(new Date());
+		appVersion.setDownloadLink(downloadLink);
 		appVersion.setApkLocPath(apkLocPath);
 		appVersion.setApkFileName(apkFileName);
 		ResultData rd = appVersionService.updateAppVersion(appVersion);
@@ -688,18 +689,61 @@ public class AppInfoController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/appview/{id}", method = RequestMethod.GET)
-	public String view(@PathVariable String id, Model model) {
-		AppInfo appInfo = null;
+
+	@RequestMapping(value = "appview", method = RequestMethod.GET)
+	public String view(
+			@RequestParam(value = "id") Long id,
+			@RequestParam(value = "vid") String versionId,
+			@RequestParam(value = "aid") String appId,
+			@RequestParam(value = "error", required = false) String fileUploadError,
+			Model model) {
+		System.out.println(id);
+		System.out.println(versionId);
+		System.out.println(appId);
+		System.out.println("跳转到查看页面");
+		AppVersion appVersion = null;
 		List<AppVersion> appVersionList = null;
-		HashMap<String, String> resultMap = new HashMap<String, String>();
-		Map<String, Object> mid = new HashMap<String, Object>();
-		mid.put("id", Long.parseLong(id));
-		appInfo = (AppInfo) appInfoService.getAppInfo(mid).getData();
+
+		if (null != fileUploadError && ("error1").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_1;
+		} else if (null != fileUploadError
+				&& ("error2").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_2;
+		} else if (null != fileUploadError
+				&& ("error3").equals(fileUploadError)) {
+			fileUploadError = Contants.FILEUPPLOAD_ERROR_3;
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("appId", Long.parseLong(appId));
+		map.put("id", Long.parseLong(versionId));
+		// appVersion.setappId(Long.parseLong(appId));
+		appVersion = (AppVersion) appVersionService.getAppVersionById(map)
+				.getData();
 		appVersionList = (List<AppVersion>) appVersionService
-				.getAppVersionList(mid).getData();
-		model.addAttribute(appInfo);
+				.getAppVersionList(map).getData();
+		// System.out.println("appVersion" + appVersion);
+
+		model.addAttribute(appVersion);
 		model.addAttribute("appVersionList", appVersionList);
+
+		System.out.println("appid" + id);
+		// System.out.println("id" + id);
+		AppInfo appInfo = null;
+		Map<String, Object> infos = new HashMap<String, Object>();
+		infos.put("id", id);
+		appInfo = (AppInfo) appInfoService.getAppInfo(infos).getData();
+		List<DataDictionary> flatFormList = this
+				.getDataDictionaryList("APP_FLATFORM");
+		// 三个级别的分类列表,获取一级分类,二三级
+		ResultData lev = appCategoryService.getAppCategoriesByParentId(null);
+		List<AppCategory> categorylevel1List = (List<AppCategory>) lev
+				.getData();
+		List<AppCategory> categorylevel2List = null;
+		List<AppCategory> categorylevel3List = null;
+
+		model.addAttribute(appInfo);
+		model.addAttribute("flatFormList", flatFormList);
+		model.addAttribute("categorylevel1List", categorylevel1List);
 		return "developer/appinfoview";
 	}
 
@@ -721,33 +765,77 @@ public class AppInfoController {
 		return JSONArray.toJSONString(resultMap);
 	}
 
-	@RequestMapping(value = "/{appId}/sale.json", method = RequestMethod.PUT)
+	@RequestMapping(value = "sale.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Object sale(@PathVariable String appId, HttpSession session) {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		Long appIdInteger = 0L;
-		appIdInteger = Long.parseLong(appId);
-		resultMap.put("errorCode", "0");
-		if (appIdInteger > 0) {
-			DevUser devUser = (DevUser) session
-					.getAttribute(Contants.DEV_USER_SESSION);
-			AppInfo appInfo = new AppInfo();
-			appInfo.setId(appIdInteger);
-			appInfo.setModifyBy(devUser.getId());
-			if (appInfoService.appsysUpdataSaleStatusByAppId(appInfo)) {
-				resultMap.put("resultMsg", "success");
+	public String sale(@RequestParam(value = "valueId") String appId,
+			@RequestParam(value = "status") String status,
+			Map<String, Object> map, HttpSession session) {
+		System.out.println(appId);
+		System.out.println(status);
+		DevUser devUser = (DevUser) session
+				.getAttribute(Contants.DEV_USER_SESSION);
+		ResultData rd = new ResultData();
+		AppInfo apps = (AppInfo) appInfoService.getAppInfoById(
+				Integer.parseInt(appId)).getData();
+		String resultMsg = null;
+		if (apps.getStatus() == 4) {
+			apps.setStatus(5);
+			apps.setModifyBy(devUser.getId());
+			rd = appInfoService.modify(apps);
+			if (rd.getFlag() == 0) {
+				resultMsg = "success";
+				return "redirect:/appInfo/appInfoList";
 			} else {
-				resultMap.put("resultMsg", "failed");
+				resultMsg = "failed";
+			}
+		} else if (apps.getStatus() == 5 || apps.getStatus() == 2) {
+			apps.setStatus(4);
+			apps.setModifyBy(devUser.getId());
+			rd = appInfoService.modify(apps);
+			if (rd.getFlag() == 0) {
+				resultMsg = "success";
+				return "redirect:/appInfo/appInfoList";
+			} else {
+				resultMsg = "failed";
 			}
 		} else {
-			// errorCode:0正常
-			resultMap.put("resultMsg", "param000001");
+			resultMsg = "failed";
 		}
-		return resultMap;
+		String json = resultMsg;
+		return json;
 	}
+	// @RequestMapping(value = "sale.json", method = RequestMethod.POST)
+	// @ResponseBody
+	// public Object sale(@RequestParam String appId, HttpSession session) {
+	// System.out.println(222222);
+	// HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	// Long appIdInteger = 0L;
+	// System.out.println(appId + "aaaaaaaaaaaaaaaaaaa");
+	// appIdInteger = Long.parseLong(appId);
+	// resultMap.put("errorCode", "0");
+	// if (appIdInteger > 0) {
+	// System.out.println(2);
+	// DevUser devUser = (DevUser) session
+	// .getAttribute(Contants.DEV_USER_SESSION);
+	// AppInfo appInfo = new AppInfo();
+	// appInfo.setId(appIdInteger);
+	// appInfo.setModifyBy(devUser.getId());
+	// if (appInfoService.appsysUpdataSaleStatusByAppId(appInfo)) {
+	// System.out.println(3);
+	// resultMap.put("resultMsg", "success");
+	// } else {
+	// resultMap.put("resultMsg", "failed");
+	// }
+	// } else {
+	// // errorCode:0正常
+	// resultMap.put("resultMsg", "param000001");
+	// }
+	// return resultMap;
+	// }
 	// 处理更新
 	// @RequestMapping(value = "appinfomodify", method = RequestMethod.PUT)
-	// public String updataappInfo(@ModelAttribute("appInfos") AppInfo appInfos,
+	// public String updataappInfo(@ModelAttribute("appInfos") AppInfo
+	// appInfos,
 	// Map<String, Object> map) {
 	// System.out.println(appInfos);
 	// return "redirect:/appInfo/appInfoList";
@@ -762,7 +850,8 @@ public class AppInfoController {
 	// @RequestMapping(value = "dataDictionaryList.json", method =
 	// RequestMethod.GET)
 	// @ResponseBody
-	// public List<DataDictionary> getDataDictionary(@RequestParam String tcode)
+	// public List<DataDictionary> getDataDictionary(@RequestParam String
+	// tcode)
 	// {
 	// System.out.println(tcode);
 	// return this.getDataDictionaryList(tcode);

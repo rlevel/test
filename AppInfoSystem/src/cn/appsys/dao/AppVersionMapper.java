@@ -8,13 +8,13 @@ import org.apache.ibatis.annotations.Select;
 import cn.appsys.pojo.AppVersion;
 
 public interface AppVersionMapper {
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(Integer id);
 
 	int insert(AppVersion record);
 
 	int insertSelective(AppVersion record);
 
-	AppVersion selectByPrimaryKey(Long id);
+	AppVersion selectByPrimaryKey(Integer id);
 
 	int updateByPrimaryKeySelective(AppVersion record);
 

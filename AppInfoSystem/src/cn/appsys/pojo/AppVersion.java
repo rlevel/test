@@ -4,25 +4,25 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class AppVersion {
-	private Long id;
+	private Integer id;
 
-	private Long appId;
+	private Integer appId;
 
 	private String versionNo;
 
 	private String versionInfo;
 
-	private Long publishStatus;
+	private Integer publishStatus;
 
 	private String downloadLink;
 
 	private BigDecimal versionSize;
 
-	private Long createdBy;
+	private Integer createdBy;
 
 	private Date creationDate;
 
-	private Long modifyBy;
+	private Integer modifyBy;
 
 	private Date modifyDate;
 
@@ -36,99 +36,91 @@ public class AppVersion {
 
 	private String publishStatusName;
 
-	public String getAppName() {
-		return appName;
-	}
-
-	public void setAppName(String appName) {
-		this.appName = appName;
-	}
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Long getappId() {
+	public Integer getAppId() {
 		return appId;
 	}
 
-	public void setappId(Long appId) {
+	public void setAppId(Integer appId) {
 		this.appId = appId;
 	}
 
-	public String getversionNo() {
+	public String getVersionNo() {
 		return versionNo;
 	}
 
-	public void setversionNo(String versionNo) {
-		this.versionNo = versionNo == null ? null : versionNo.trim();
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
 	}
 
-	public String getversionInfo() {
+	public String getVersionInfo() {
 		return versionInfo;
 	}
 
-	public void setversionInfo(String versionInfo) {
-		this.versionInfo = versionInfo == null ? null : versionInfo.trim();
+	public void setVersionInfo(String versionInfo) {
+		this.versionInfo = versionInfo;
 	}
 
-	public Long getpublishStatus() {
+	public Integer getPublishStatus() {
 		return publishStatus;
 	}
 
-	public void setpublishStatus(Long publishStatus) {
+	public void setPublishStatus(Integer publishStatus) {
 		this.publishStatus = publishStatus;
 	}
 
-	public String getdownloadLink() {
+	public String getDownloadLink() {
 		return downloadLink;
 	}
 
-	public void setdownloadLink(String downloadLink) {
-		this.downloadLink = downloadLink == null ? null : downloadLink.trim();
+	public void setDownloadLink(String downloadLink) {
+		this.downloadLink = downloadLink;
 	}
 
-	public BigDecimal getversionSize() {
+	public BigDecimal getVersionSize() {
 		return versionSize;
 	}
 
-	public void setversionSize(BigDecimal versionSize) {
+	public void setVersionSize(BigDecimal versionSize) {
 		this.versionSize = versionSize;
 	}
 
-	public Long getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(Long createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public Date getcreationDate() {
+	public Date getCreationDate() {
 		return creationDate;
 	}
 
-	public void setcreationDate(Date creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public Long getmodifyBy() {
+	public Integer getModifyBy() {
 		return modifyBy;
 	}
 
-	public void setmodifyBy(Long modifyBy) {
+	public void setModifyBy(Integer modifyBy) {
 		this.modifyBy = modifyBy;
 	}
 
-	public Date getmodifyDate() {
+	public Date getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setmodifyDate(Date modifyDate) {
+	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 
@@ -148,19 +140,27 @@ public class AppVersion {
 		this.apkFileName = apkFileName;
 	}
 
-	public String getapkName() {
+	public String getApkName() {
 		return apkName;
 	}
 
-	public void setapkName(String apkName) {
+	public void setApkName(String apkName) {
 		this.apkName = apkName;
 	}
 
-	public String getpublishStatusName() {
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public String getPublishStatusName() {
 		return publishStatusName;
 	}
 
-	public void setpublishStatusName(String publishStatusName) {
+	public void setPublishStatusName(String publishStatusName) {
 		this.publishStatusName = publishStatusName;
 	}
 

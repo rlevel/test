@@ -7,7 +7,7 @@ import java.util.Date;
 public class AppInfo implements Serializable {
 	private static final long serialVersionUID = 621945397109638653L;
 
-	private Long id;
+	private Integer id;
 
 	private String softwareName;
 
@@ -21,11 +21,11 @@ public class AppInfo implements Serializable {
 
 	private Date updateDate;
 
-	private Long devId;
+	private Integer devId;
 
 	private String appInfo;
 
-	private Long status;
+	private Integer status;
 
 	private Date onSaleDate;
 
@@ -39,13 +39,13 @@ public class AppInfo implements Serializable {
 
 	private Integer categoryLevel3;
 
-	private Long downloads;
+	private Integer downloads;
 
-	private Long createdBy;
+	private Integer createdBy;
 
 	private Date creationDate;
 
-	private Long modifyBy;
+	private Integer modifyBy;
 
 	private Date modifyDate;
 
@@ -53,7 +53,7 @@ public class AppInfo implements Serializable {
 
 	private String logoLocPath;
 
-	private Long versionId;
+	private Integer versionId;
 
 	private String statusName;
 
@@ -115,36 +115,12 @@ public class AppInfo implements Serializable {
 		this.versionNo = versionNo;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getAPKName() {
 		return APKName;
 	}
 
 	public void setAPKName(String aPKName) {
 		APKName = aPKName;
-	}
-
-	public Long getStatus() {
-		return status;
-	}
-
-	public void setStatus(Long status) {
-		this.status = status;
-	}
-
-	public Long getDownloads() {
-		return downloads;
-	}
-
-	public void setDownloads(Long downloads) {
-		this.downloads = downloads;
 	}
 
 	public String getSoftwareName() {
@@ -185,14 +161,6 @@ public class AppInfo implements Serializable {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
-	}
-
-	public Long getDevId() {
-		return devId;
-	}
-
-	public void setDevId(Long devId) {
-		this.devId = devId;
 	}
 
 	public String getAppInfo() {
@@ -251,28 +219,12 @@ public class AppInfo implements Serializable {
 		this.categoryLevel3 = categoryLevel3;
 	}
 
-	public Long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Long createdBy) {
-		this.createdBy = createdBy;
-	}
-
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
-	}
-
-	public Long getModifyBy() {
-		return modifyBy;
-	}
-
-	public void setModifyBy(Long modifyBy) {
-		this.modifyBy = modifyBy;
 	}
 
 	public Date getModifyDate() {
@@ -299,11 +251,59 @@ public class AppInfo implements Serializable {
 		this.logoLocPath = logoLocPath;
 	}
 
-	public Long getVersionId() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getDevId() {
+		return devId;
+	}
+
+	public void setDevId(Integer devId) {
+		this.devId = devId;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getDownloads() {
+		return downloads;
+	}
+
+	public void setDownloads(Integer downloads) {
+		this.downloads = downloads;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getModifyBy() {
+		return modifyBy;
+	}
+
+	public void setModifyBy(Integer modifyBy) {
+		this.modifyBy = modifyBy;
+	}
+
+	public Integer getVersionId() {
 		return versionId;
 	}
 
-	public void setVersionId(Long versionId) {
+	public void setVersionId(Integer versionId) {
 		this.versionId = versionId;
 	}
 

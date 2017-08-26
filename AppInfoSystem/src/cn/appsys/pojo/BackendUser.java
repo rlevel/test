@@ -3,7 +3,7 @@ package cn.appsys.pojo;
 import java.util.Date;
 
 public class BackendUser {
-	private Long id;
+	private Integer id;
 
 	private String usercode;
 
@@ -11,22 +11,24 @@ public class BackendUser {
 
 	private String userpassword;
 
-	private Long usertype;
+	private Integer usertype;
 
-	private Long createdby;
+	private Integer createdby;
 
 	private Date creationdate;
 
-	private Long modifyby;
+	private Integer modifyby;
 
 	private Date modifydate;
 
-	public Long getId() {
-		return id;
+	private String uservaluename;
+
+	public String getUservaluename() {
+		return uservaluename;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUservaluename(String uservaluename) {
+		this.uservaluename = uservaluename;
 	}
 
 	public String getUsercode() {
@@ -53,22 +55,6 @@ public class BackendUser {
 		this.userpassword = userpassword == null ? null : userpassword.trim();
 	}
 
-	public Long getUsertype() {
-		return usertype;
-	}
-
-	public void setUsertype(Long usertype) {
-		this.usertype = usertype;
-	}
-
-	public Long getCreatedby() {
-		return createdby;
-	}
-
-	public void setCreatedby(Long createdby) {
-		this.createdby = createdby;
-	}
-
 	public Date getCreationdate() {
 		return creationdate;
 	}
@@ -77,11 +63,35 @@ public class BackendUser {
 		this.creationdate = creationdate;
 	}
 
-	public Long getModifyby() {
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUsertype() {
+		return usertype;
+	}
+
+	public void setUsertype(Integer usertype) {
+		this.usertype = usertype;
+	}
+
+	public Integer getCreatedby() {
+		return createdby;
+	}
+
+	public void setCreatedby(Integer createdby) {
+		this.createdby = createdby;
+	}
+
+	public Integer getModifyby() {
 		return modifyby;
 	}
 
-	public void setModifyby(Long modifyby) {
+	public void setModifyby(Integer modifyby) {
 		this.modifyby = modifyby;
 	}
 
@@ -92,4 +102,15 @@ public class BackendUser {
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
 	}
+
+	@Override
+	public String toString() {
+		return "BackendUser [id=" + id + ", usercode=" + usercode
+				+ ", username=" + username + ", userpassword=" + userpassword
+				+ ", usertype=" + usertype + ", createdby=" + createdby
+				+ ", creationdate=" + creationdate + ", modifyby=" + modifyby
+				+ ", modifydate=" + modifydate + ", uservaluename="
+				+ uservaluename + "]";
+	}
+
 }

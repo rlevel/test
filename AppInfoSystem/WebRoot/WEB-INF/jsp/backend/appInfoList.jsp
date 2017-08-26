@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理审核 <small>${devUserSession.devname},属性名不匹配</small>
+						APP信息管理审核 <small>${userSession.username},属性名不匹配</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -34,27 +34,12 @@
 										for="first-name">软件名称 </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input type="text" id="querysoftwareName"
-											name="querysoftwareName" value="${querysoftwareName}"
+											name="querysoftwareName"
+											value="${querysoftwareName==null?'':querysoftwareName}"
 											class="form-control col-md-7 col-xs-12">
 									</div>
 								</div></li>
-							<li>
-								<div class="form-group">
-									<label class="control-label col-md-3 col-sm-3 col-xs-12">APP状态</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<select name="querystatus" id="querystatus"
-											class="form-control">
-											<c:if test="${statusList!=null}"></c:if>
-											<option value="">--请选择--</option>
-											<c:forEach items="${statusList}" var="dataDic">
-												<option
-													<c:if test="${dataDic.valueId==querystatus}">selected="selected"</c:if>
-													value="${dataDic.valueId}">${dataDic.valueName}</option>
-											</c:forEach>
-										</select>
-									</div>
-								</div>
-							</li>
+
 							<li>
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">所属平台</label>
@@ -66,7 +51,7 @@
 											<c:forEach items="${flatFormList}" var="dataDic">
 												<option
 													<c:if test="${dataDic.valueId==queryflatformId}">selected="selected"</c:if>
-													value="${dataDic.valueId}">${dataDic.valueName}</option>
+													value="${dataDic.valueId}">${dataDic.valueName==null?"":dataDic.valueName}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -204,14 +189,14 @@
 										aria-label="Salary: activate to sort column ascending">最新版本号
 									</th>
 									<th class="sorting" tabindex="0" aria-controls="datatable"
-										rowspan="1" colspan="1" style="width: 130px;"
+										rowspan="1" colspan="1" style="width: 75px;"
 										aria-label="Salary: activate to sort column ascending">操作
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${appInfoList}" var="appinfo">
-								
+
 									<tr>
 										<td>${appinfo.softwareName}</td>
 										<td>${appinfo.APKName}</td>
@@ -224,68 +209,13 @@
 										<td>${appinfo.downloads}</td>
 										<td>${appinfo.versionNo}</td>
 										<td>
-										<div class="btn-group">
-												<button type="button" class="btn btn-primary">点击操作</button>
-												<button type="button"
-													class="btn btn-primary dropdown-toggle"
-													data-toggle="dropdown" aria-expanded="false">
-													<span class="caret"></span> <span class="sr-only">切换下拉菜单</span>
-												</button>
-												<ul class="dropdown-menu" role="menu">
-													<!-- 	<li><a href="#">上架/下架/null</a></li> -->
-													<li><c:choose>
-															<c:when test="${appinfo.status==2 || appinfo.status==5}">
-																<a class="saleSwichOpen" saleSwitch="open"
-																appinfoid="${appinfo.id}"
-																appsoftwarename=${appinfo.softwareName } data-toggle="tooltip"
-																title="恭喜,您的审核已经通过,您可以点击上架发布您的APP"
-																 href="#">上架</a>
-															</c:when>
-															<c:when test="${appinfo.status==4 || appinfo.status==5}">
-																<a id="saleSwichClose" href="#"	class="saleSwichClose" saleSwitch="close"
-																appinfoid="${appinfo.id}"
-																appsoftwarename=${appinfo.softwareName } data-toggle="tooltip"
-																title="您可以点击下架来停止发布您的APP,市场将不提供APP的下载"
-																>下架</a>
-															</c:when>
-														</c:choose></li>
-													<li><a class="addVersion" appinfoid="${appinfo.id}" href="#" data-toggle="tooltip"
-														data-placement="top" title="新增APP版本信息"> <span
-															class="glyphicon glyphicon-cog " aria-hidden="true"></span>新增版本
-													</a></li>
-													<li><a href="#" 
-													class="modifyVersion"
-													data-toggle="tooltip" 
-													appinfoid="${appinfo.id }"
-													versionid="${appinfo.versionId }"
-													status="${appinfo.status }"
-													statusname="${appinfo.statusName }"
-														data-placement="top" title="修改APP版本信息"> <span
-															class="glyphicon glyphicon-cog" aria-hidden="true"></span>修改版本
-													</a></li>
-													<li class="divider"></li>
-													
-													<li>
-													<a href="${path}/appInfo/jumpmodify/${appinfo.id}" appinfoid="${appinfo.id}"
-													status="${appinfo.status}"
-													statusName="${appinfo.statusName}"
-													data-toggle="tooltip"
-														data-placement="top" title="新增APP版本信息"> <span
-															class="glyphicon glyphicon-cog modifyAppinfo"
-															aria-hidden="true"></span>修改
-													</a></li>
-													<li><a class="viewApp" appinfoid="${appinfo.id}" href="#" data-toggle="tooltip"
-														data-placement="top" title="查看APP基础信息以及全部版本信息"> <span
-															class="glyphicon glyphicon-cog" aria-hidden="true"></span>查看
-													</a></li>
-													<li><a class="deleteApp" appinfoid="${appinfo.id}" 
-														appsoftweraName="${appinfo.softwareName }"
-														href="#" data-toggle="tooltip"
-														data-placement="top" title="删除APP基础信息以及全部版本信息"> <span
-															class="glyphicon glyphicon-cog" aria-hidden="true"></span>删除
-													</a></li>
-												</ul>
-											</div></td>
+											<button class="viewApp" versionid="${appinfo.versionId }"
+												status="${appinfo.status }"
+												statusname="${appinfo.statusName }"
+												appinfoid="${appinfo.id}" href="#" data-toggle="tooltip"
+												data-placement="top" title="审核" type="button"
+												class="btn btn-round btn-success">审核</button>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
