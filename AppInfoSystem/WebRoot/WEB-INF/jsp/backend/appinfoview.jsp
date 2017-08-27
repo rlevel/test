@@ -8,7 +8,6 @@
 					<h2>
 						查看并审核APP基础信息<small>${userSession.username}</small>
 					</h2>
-					角色/应用简介的属性名
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -153,7 +152,7 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<textarea id="appInfo" name="appInfo" readonly="readonly"
 								class="form-control col-md-7 col-xs-12"
-								value="${appInfo.appInfo}"></textarea>
+								value="">${appInfo.appInfos}</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -172,7 +171,7 @@
 									<span style="color:red;font-weight:bold;">*注:1.大小不得超过500k,2.图片格式:jsp...4个</span>
 								</p>
 							</div>
-							<div id="logoFile"></div>
+							<div id="logoFile"><img alt="..." src="${appInfo.logoPicPath}"></div>
 							${fileUploadError }
 						</div>
 					</div>
@@ -254,13 +253,14 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12"
-							id="interfaceLanguage" name="interfaceLanguage" for="textarea">版本简介&nbsp;<span
+							id="interfaceLanguage" name="interfaceLanguage"
+							for="textarea">版本简介&nbsp;<span
 							class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<textarea id="versionInfo" name="versionInfo" required="required"
 								class="control-label col-md-3 col-sm-3 col-xs-12"
-								readonly="readonly" value="${appVersion.versionInfo}"></textarea>
+								readonly="readonly" value="">${appVersion.versionInfo}</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -281,7 +281,7 @@
 									<span style="color:red;font-weight:bold;">*注:1.大小不得超过500m,2.文件类型:apk...4个</span>
 								</p>
 							</div>
-							<div id="apkFile"></div>
+							<div id="apkFile"><p>${appVersion.apkFileName}</div>
 							${fileUploadError }
 						</div>
 					</div>

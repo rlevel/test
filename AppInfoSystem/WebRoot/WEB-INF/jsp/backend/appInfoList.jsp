@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理审核 <small>${userSession.username},属性名不匹配</small>
+						APP信息管理审核 <small>${userSession.username}</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -205,7 +205,7 @@
 										<td>
 											${appinfo.categorylevel1Name}-->${appinfo.categorylevel2Name}-->${appinfo.categorylevel3Name}
 										</td>
-										<td><span id="appInfoStatus${appInfo.id}">${appinfo.statusName}</span></td>
+										<td><span id="appInfoStatus" value="${appInfo.id}">${appinfo.statusName}</span></td>
 										<td>${appinfo.downloads}</td>
 										<td>${appinfo.versionNo}</td>
 										<td>

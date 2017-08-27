@@ -3,7 +3,7 @@
 <mapper namespace="cn.appsys.dao.DevUserMapper">
 	<resultMap id="BaseResultMap" type="cn.appsys.pojo.DevUser">
 		<id column="id" property="id" jdbcType="BIGINT" />
-		<result column="devCode" property="devcode" jdbcType="VARCHAR" />
+		<result column="devCode" property="devCode" jdbcType="VARCHAR" />
 		<result column="devName" property="devname" jdbcType="VARCHAR" />
 		<result column="devPassword" property="devpassword" jdbcType="VARCHAR" />
 		<result column="devEmail" property="devemail" jdbcType="VARCHAR" />
@@ -12,13 +12,19 @@
 		<result column="creationDate" property="creationdate" jdbcType="TIMESTAMP" />
 		<result column="modifyBy" property="modifyby" jdbcType="BIGINT" />
 		<result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+		<result column="devType" property="devType" jdbcType="BIGINT" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		id, devCode, devName, devPassword, devEmail, devInfo, createdBy,
 		creationDate, modifyBy,
-		modifyDate
+		modifyDate,devType
 	</sql>
-
+	<!-- <select id="selectDevUserByCode" resultType="cn.appsys.pojo.DevUser">
+		select u.devCode,u.devName,u.devPassword,u.devType,
+		(select devtypeName from data_dictionary d where u.devType=d.valueId and d.typeCode='USER_TYPE') as devtypeName
+		from dev_user u
+		where u.devCode = #{_parameter}
+	</select> -->
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
@@ -34,13 +40,13 @@
 		insert into dev_user (id, devCode, devName,
 		devPassword, devEmail, devInfo,
 		createdBy, creationDate, modifyBy,
-		modifyDate)
-		values (#{id,jdbcType=BIGINT}, #{devcode,jdbcType=VARCHAR},
+		modifyDate,devType)
+		values (#{id,jdbcType=BIGINT}, #{devCode,jdbcType=VARCHAR},
 		#{devname,jdbcType=VARCHAR},
 		#{devpassword,jdbcType=VARCHAR}, #{devemail,jdbcType=VARCHAR}, #{devinfo,jdbcType=VARCHAR},
 		#{createdby,jdbcType=BIGINT}, #{creationdate,jdbcType=TIMESTAMP},
 		#{modifyby,jdbcType=BIGINT},
-		#{modifydate,jdbcType=TIMESTAMP})
+		#{modifydate,jdbcType=TIMESTAMP},#{devType,jdbcType=TIMESTAMP})
 	</insert>
 	<insert id="insertSelective" parameterType="cn.appsys.pojo.DevUser">
 		insert into dev_user
@@ -48,7 +54,7 @@
 			<if test="id != null">
 				id,
 			</if>
-			<if test="devcode != null">
+			<if test="devCode != null">
 				devCode,
 			</if>
 			<if test="devname != null">
@@ -75,13 +81,16 @@
 			<if test="modifydate != null">
 				modifyDate,
 			</if>
+			<if test="devType != null">
+				devType,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				#{id,jdbcType=BIGINT},
 			</if>
-			<if test="devcode != null">
-				#{devcode,jdbcType=VARCHAR},
+			<if test="devCode != null">
+				#{devCode,jdbcType=VARCHAR},
 			</if>
 			<if test="devname != null">
 				#{devname,jdbcType=VARCHAR},
@@ -107,13 +116,16 @@
 			<if test="modifydate != null">
 				#{modifydate,jdbcType=TIMESTAMP},
 			</if>
+			<if test="devType != null">
+				#{devType,jdbcType=BIGINT},
+			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.DevUser">
 		update dev_user
 		<set>
-			<if test="devcode != null">
-				devCode = #{devcode,jdbcType=VARCHAR},
+			<if test="devCode != null">
+				devCode = #{devCode,jdbcType=VARCHAR},
 			</if>
 			<if test="devname != null">
 				devName = #{devname,jdbcType=VARCHAR},
@@ -139,12 +151,15 @@
 			<if test="modifydate != null">
 				modifyDate = #{modifydate,jdbcType=TIMESTAMP},
 			</if>
+			<if test="devType != null">
+				#{devType,jdbcType=BIGINT},
+			</if>
 		</set>
 		where id = #{id,jdbcType=BIGINT}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.DevUser">
 		update dev_user
-		set devCode = #{devcode,jdbcType=VARCHAR},
+		set devCode = #{devCode,jdbcType=VARCHAR},
 		devName = #{devname,jdbcType=VARCHAR},
 		devPassword = #{devpassword,jdbcType=VARCHAR},
 		devEmail = #{devemail,jdbcType=VARCHAR},
@@ -153,6 +168,7 @@
 		creationDate = #{creationdate,jdbcType=TIMESTAMP},
 		modifyBy = #{modifyby,jdbcType=BIGINT},
 		modifyDate = #{modifydate,jdbcType=TIMESTAMP}
+		devType= #{devType,jdbcType=TIMESTAMP}
 		where id = #{id,jdbcType=BIGINT}
 	</update>
 </mapper>

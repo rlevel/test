@@ -31,4 +31,12 @@ public class AppCategoryServiceImpl implements AppCategoryService {
 		rd.setData(appCategories);
 		return rd;
 	}
+
+	@Override
+	public ResultData getAppCategoriesById(Integer id) {
+		ResultData rd = new ResultData();
+		List<AppCategory> apps = appCategoryMapper.getAppCategoriesById(id);
+		rd.setData(apps);
+		return rd;
+	}
 }

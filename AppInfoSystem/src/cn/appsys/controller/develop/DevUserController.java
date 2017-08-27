@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import cn.appsys.service.developer.DevUserService;
@@ -19,7 +18,6 @@ import com.alibaba.fastjson.JSON;
 
 @Controller
 @RequestMapping("devuser")
-@SessionAttributes({ "suser" })
 public class DevUserController {
 	@Autowired
 	private DevUserService devUserService;
@@ -27,16 +25,15 @@ public class DevUserController {
 	// ´¦ÀíµÇÂ¼
 	@RequestMapping(value = "login")
 	@ResponseBody
-	public String isLogin(String devcode, String devpassword,
+	public String isLogin(String devCode, String devpassword,
 			Map<String, Object> map, HttpSession session) {
 		ResultData rd = new ResultData();
-		rd = devUserService.selectDevUserByCode(devcode, devpassword);
+		rd = devUserService.selectDevUserByCode(devCode, devpassword);
 		if (rd.getFlag() == 0) {
 			map.put("suser", rd.getData());
 		}
 		String json = JSON.toJSONString(rd);
 		session.setAttribute(Contants.DEV_USER_SESSION, rd.getData());
-		// System.out.println(json);
 		return json;
 	}
 
@@ -50,7 +47,6 @@ public class DevUserController {
 	@RequestMapping("logOut")
 	public String logOut(HttpSession session, SessionStatus sessionStatus,
 			Map<String, Object> map) {
-		System.out.println(1);
 		session.invalidate();
 		sessionStatus.setComplete();
 		map.put("flag", 1);

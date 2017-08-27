@@ -11,7 +11,7 @@
 		<result column="softwareSize" property="softwareSize" jdbcType="DECIMAL" />
 		<result column="updateDate" property="updateDate" jdbcType="DATE" />
 		<result column="devId" property="devId" jdbcType="BIGINT" />
-		<result column="appInfo" property="appInfo" jdbcType="VARCHAR" />
+		<result column="appInfos" property="appInfos" jdbcType="VARCHAR" />
 		<result column="status" property="status" jdbcType="BIGINT" />
 		<result column="onSaleDate" property="onSaleDate" jdbcType="TIMESTAMP" />
 		<result column="offSaleDate" property="offSaleDate" jdbcType="TIMESTAMP" />
@@ -35,7 +35,7 @@
 		id, softwareName, APKName, supportROM, interfaceLanguage,
 		softwareSize,
 		updateDate,
-		devId, appInfo, status, onSaleDate,
+		devId, appInfos, status, onSaleDate,
 		offSaleDate, flatformId, categoryLevel1,
 		categoryLevel2,
 		categoryLevel3, downloads, createdBy, creationDate, modifyBy,
@@ -173,7 +173,7 @@
 		insert into app_info (id,
 		softwareName, APKName,
 		supportROM, interfaceLanguage, softwareSize,
-		updateDate, devId, appInfo,
+		updateDate, devId, appInfos,
 		status, onSaleDate, offSaleDate,
 		flatformId, categoryLevel1, categoryLevel2,
 		categoryLevel3, downloads,
@@ -188,7 +188,7 @@
 		#{supportROM,jdbcType=VARCHAR}, #{interfaceLanguage,jdbcType=VARCHAR},
 		#{softwareSize,jdbcType=DECIMAL},
 		#{updateDate,jdbcType=DATE},
-		#{devId,jdbcType=BIGINT}, #{appInfo,jdbcType=VARCHAR},
+		#{devId,jdbcType=BIGINT}, #{appInfos,jdbcType=VARCHAR},
 		#{status,jdbcType=BIGINT}, #{onSaleDate,jdbcType=TIMESTAMP},
 		#{offSaleDate,jdbcType=TIMESTAMP},
 		#{flatformId,jdbcType=BIGINT},
@@ -228,8 +228,8 @@
 			<if test="devId != null">
 				devId,
 			</if>
-			<if test="appInfo != null">
-				appInfo,
+			<if test="appInfos != null">
+				appInfos,
 			</if>
 			<if test="status != null">
 				status,
@@ -302,8 +302,8 @@
 			<if test="devId != null">
 				#{devId,jdbcType=BIGINT},
 			</if>
-			<if test="appInfo != null">
-				#{appInfo,jdbcType=VARCHAR},
+			<if test="appInfos != null">
+				#{appInfos,jdbcType=VARCHAR},
 			</if>
 			<if test="status != null">
 				#{status,jdbcType=BIGINT},
@@ -377,8 +377,8 @@
 			<if test="devId != null">
 				devId = #{devId,jdbcType=BIGINT},
 			</if>
-			<if test="appInfo != null">
-				appInfo = #{appInfo,jdbcType=VARCHAR},
+			<if test="appInfos != null">
+				appInfos = #{appInfos,jdbcType=VARCHAR},
 			</if>
 			<if test="status != null">
 				status = #{status,jdbcType=BIGINT},
@@ -442,8 +442,8 @@
 		updateDate =
 		#{updateDate,jdbcType=DATE},
 		devId = #{devId,jdbcType=BIGINT},
-		appInfo =
-		#{appInfo,jdbcType=VARCHAR},
+		appInfos =
+		#{appInfos,jdbcType=VARCHAR},
 		status = #{status,jdbcType=BIGINT},
 		onSaleDate = #{onSaleDate,jdbcType=TIMESTAMP},
 		offSaleDate =

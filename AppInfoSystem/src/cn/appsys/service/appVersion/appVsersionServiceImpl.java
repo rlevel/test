@@ -69,4 +69,12 @@ public class appVsersionServiceImpl implements appVersionService {
 		}
 		return rd;
 	}
+
+	@Override
+	public ResultData getAppVersion(Integer id) {
+		ResultData rd = new ResultData();
+		AppVersion a = appVersionMapper.selectByPrimaryKey(id);
+		rd.setData(a);
+		return rd;
+	}
 }

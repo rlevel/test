@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>session异常</title>
+<title>Gentelella Alela! |</title>
 
 <!-- Bootstrap -->
 <link href="${path }/vendors/bootstrap/dist/css/bootstrap.min.css"
@@ -34,20 +34,20 @@
 			<div class="col-md-12">
 				<div class="col-middle">
 					<div class="text-center text-center">
-					<br>
-					<br>
-					<br>
-						<h1 class="error-number">403</h1>
-						<h2>Access denied</h2>
+						<h1 class="error-number"> APP</h1>
 						<p>
-							Full authentication is required to access this resource. <a
-								href="#">Report this?</a>
+						<h3>信息管理平台</h3>
+							<!-- Full authentication is required to access this resource. <a
+								href="#">Report this?</a> -->
 						</p>
 						<div class="mid_center">
-							<h3></h3>
-							<br>
-							<button class="btn btn-default" type="submit" onclick="window.location='index.jsp'">回首页</button>
-						
+							<p></p>
+							<p>
+							<!-- Full authentication is required to access this resource. <a
+								href="#">Report this?</a> -->
+						</p>
+							<button class="btn btn-default" type="submit" onclick="window.location='begin/backend'">后台管理系统入口</button>
+							<button class="btn btn-default" type="submit" onclick="window.location='begin/developer'">开发者平台入口</button>
 						</div>
 					</div>
 				</div>

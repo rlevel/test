@@ -62,7 +62,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${suser.devcode}</h2>
+							<h2>${devUserSession.devCode}</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -73,7 +73,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${suser.devname}</h3>
+							<h3>${devUserSession.devname}</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i> APP账户管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -120,7 +120,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img src="${path}/statics/images/IMG_5503.jpg" alt="">${suser.devname}
+								aria-expanded="false"> <img src="${path}/statics/images/IMG_5503.jpg" alt="">${devUserSession.devname}
 									<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">

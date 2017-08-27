@@ -71,7 +71,7 @@
 										<td>
 											<a href="${appVersion.downloadLink}">${appVersion.apkFileName}</a>
 										</td>
-										<td><fm:formatDate value="${appVersion.modifyDate}" pattern="yyyy-MM-dd"/></td>
+										<td><fm:formatDate value="${appVersion.creationDate}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -145,8 +145,7 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<textarea id="versionInfo" name="versionInfo" required="required" 
 							class="control-label col-md-3 col-sm-3 col-xs-12"
-							value="${appVersion.versionInfo}"
-							></textarea>
+							>${appVersion.versionInfo}</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -162,16 +161,19 @@
 								class="form-control col-md-7 col-xs-12"><p>
 								<span style="color:red;font-weight:bold;">*注:1.大小不得超过500m,2.文件类型:apk...4个</span></p>
 							</div>
-							<div id="apkFile"></div>
+							<div id="apkFile"><p>${appVersion.apkFileName}
+							<a href="${appVersion.downloadLink}">下载</a>
+							<a id="del" class="del" href="">删除</a>
+							</p></div>
 								${fileUploadError }
 						</div>
 					</div>
 					<div class="ln_solid"></div>
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button class="btn btn-primary" type="button">Cancel</button>
-							<button id="back" class="btn btn-primary" type="reset">Reset</button>
-							<button type="submit" class="btn btn-success">Submit</button>
+							<button type="button" onclick="history.go(-1)" class="btn btn-dark" >返回</button>
+							<button id="back" class="btn btn-primary" type="reset">重填</button>
+							<button type="submit" class="btn btn-success">提交</button>
 						</div>
 					</div>
 

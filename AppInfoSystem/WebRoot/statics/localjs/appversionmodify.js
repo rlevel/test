@@ -17,21 +17,21 @@ function delfile(id){
 			error:function(data){//当访问时可能出现404,505
 				alert("请求错误");
 			}
+		}	
 	});
 }
+
 $(function(){
 	$("#back").on("click",function(){
 		window.location.href="../appInfo/list"
 	});
-	
 	var downloadLink = $("#downloadLink").val();
 	var id = $("#id").val();
 	var apkFileName= $("#apkFileName").val();
 	if(downloadLink==null || downloadLink==""){
-		${"#uploadfile"}.show();
+		$("#uploadfile").show();
 	}else{
-		$("#apkFile").append("<p><img src='"+logoPicPath+"?m="+Math.random()+"' width='100px'>")
-		+"&nbsp;&nbsp;<a href=\"javascript:onclick=delfile('"+id+"');\">删除</a></p>");
+		$("#apkFile").append("<a href=\"javascript:;\" onclick=\"delfile('"+id+"');\">删除</a></p>");
 	}
+
 });
-}

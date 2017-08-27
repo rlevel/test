@@ -10,7 +10,7 @@ $("#querycategoryLevel1").change(function(){
 			//返回的数据类型
 			dataType:"json",
 			success:function(data){//data:返回的json对象
-				//$("#querycategoryLevel2").append("");
+				$("#querycategoryLevel2").html("");
 				var options = "<option value=''>--请选择--</option>"
 				for(var i=0;i<data.data.length;i++){
 					var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
@@ -18,9 +18,9 @@ $("#querycategoryLevel1").change(function(){
 				}
 			},
 			error:function(data){//当访问时可能出现404,505
-				alert("加载二级分类失败")
+				alert("加载二级分类失败");
 			}
-		})
+		});
 	}else{
 		$("#querycategoryLevel2").html();
 		var options = "<option value=''>--请选择--</option>"
@@ -42,14 +42,12 @@ $("#querycategoryLevel2").change(function(){
 			//返回的数据类型
 			dataType:"json",
 			success:function(data){//data:返回的json对象
-				//$("#querycategoryLevel3").html("");
+				$("#querycategoryLevel3").html("");
 				var options = "<option value=''>--请选择--</option>"
 					for(var i=0;i<data.data.length;i++){
 						var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
 						$("#querycategoryLevel3").append(j);
 					}
-				
-				
 				/*//$("#querycategoryLevel2").html("");
 				var options = "<option value=''>--请选择--</option>"
 				for(var i=0;i<data.data.length;i++){
@@ -68,7 +66,7 @@ $("#querycategoryLevel2").change(function(){
 	}
 });
 
-/*$(".modifyAppinfo").on("click",function(){
+$(".modifyAppinfo").on("click",function(){
 	var obj=$(this);
 	var status = obj.attr("status");
 	if(status=="1" ||status=="3"){//待审核,审核未通过-->修改
@@ -76,7 +74,7 @@ $("#querycategoryLevel2").change(function(){
 	}else{
 		alert("APP状态为<"+obj.attr("statusName")+">,不许修改");
 	}
-});*/
+});
 
 $(".addVersion").on("click",function(){
 	var obj = $(this);
@@ -88,7 +86,7 @@ $(".modifyVersion").on("click",function(){
 	var status = obj.attr("status");
 	var versionid = obj.attr("versionid");
 	var appinfoid = obj.attr("appinfoid");
-	if(status=="1"|| !versionid==""){
+	if(status=="1" || !versionid==""){
 		if(versionid==null || versionid==""){
 			alert("无版本,不能改");
 		}else{
@@ -152,27 +150,11 @@ $(document).on("click",".saleSwichOpen,.saleSwichClose",function(){
 		//返回的数据类型
 		dataType:"json",
 		success:function(data){//data:返回的json对象
-			if(data=='success'){
-				location.reload(true);
-			}
-			
+			window.location.reload();
+		},error:function(data){
+			window.location.reload();
 		}
 	});
-});
-
-
-/*$(document).on("click",".saleSwichOpen,.saleSwichClose",function(){
-	var obj = $(this);
-	var appsoftwarename = obj.attr("appsoftwarename");
-	var appinfoid = obj.attr("appinfoid");
-	var saleSwitch = obj.attr("saleSwitch");
-	if("open" == saleSwitch){//处于审核通过,已下架
-		saleSwitchAjax(appinfoid,obj);
-	}else if("close" == saleSwich){//处于审核通过,已下架
-		if(confirm("你确定要下架您的APP应用<+obj.attr("appsoftwarename")+>吗?")){
-			saleSwitchAjax(appinfoid,obj);
-		}
-	}
 });
 
 var saleSwitchAjax = function(appId,obj){
@@ -232,4 +214,4 @@ var saleSwitchAjax = function(appId,obj){
 			}
 		}
 	});
-}*/
+}

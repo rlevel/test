@@ -76,8 +76,8 @@
 		#{versionInfo,jdbcType=VARCHAR}, #{publishStatus,jdbcType=BIGINT}, #{downloadLink,jdbcType=VARCHAR},
 		#{versionSize,jdbcType=DECIMAL}, #{createdBy,jdbcType=BIGINT},
 		#{creationDate,jdbcType=TIMESTAMP},
-		#{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}, #{apklocPath,jdbcType=VARCHAR},
-		#{apkfileName,jdbcType=VARCHAR})
+		#{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}, #{apkLocPath,jdbcType=VARCHAR},
+		#{apkFileName,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="cn.appsys.pojo.AppVersion">
 		insert into app_version
@@ -191,16 +191,16 @@
 			<if test="creationDate != null">
 				creationDate = #{creationDate,jdbcType=TIMESTAMP},
 			</if>
-			<if test="modiFyBy != null">
+			<if test="modifyBy != null">
 				modifyBy = #{modifyBy,jdbcType=BIGINT},
 			</if>
 			<if test="modifyDate != null">
 				modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
 			</if>
-			<if test="apklocPath != null">
+			<if test="apkLocPath != null">
 				apkLocPath = #{apkLocPath,jdbcType=VARCHAR},
 			</if>
-			<if test="apkfileName != null">
+			<if test="apkFileName != null">
 				apkFileName = #{apkFileName,jdbcType=VARCHAR},
 			</if>
 		</set>

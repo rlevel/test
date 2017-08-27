@@ -7,7 +7,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						APP信息管理维护 <small>${devUserSession.devname},上下架不刷新</small>
+						APP信息管理维护 <small><i class="fa fa-user"></i>${devUserSession.devname}</small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -211,7 +211,6 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${appInfoList}" var="appinfo">
-								
 									<tr>
 										<td>${appinfo.softwareName}</td>
 										<td>${appinfo.APKName}</td>
@@ -272,6 +271,7 @@
 													<a href="${path}/appInfo/jumpmodify/${appinfo.id}" appinfoid="${appinfo.id}"
 													status="${appinfo.status}"
 													statusName="${appinfo.statusName}"
+													
 													data-toggle="tooltip"
 														data-placement="top" title="修改APP版本信息"> <span
 															class="glyphicon glyphicon-cog modifyAppinfo"
@@ -328,32 +328,6 @@
 										aria-controls="datatable_responsive" data-dt-idx="7"
 										tabindex="0">尾页</a></li>
 								</c:if>
-
-								<!-- 页码优化 -->
-								<!-- <li class="paginate_button previous disabled"
-									id="datatable_previous"><a href="#"
-									aria-controls="datatable" data-dt-idx="0" tabindex="0">首页</a></li>
-								<li class="paginate_button active">
-								<li class="paginate_button previous disabled"
-									id="datatable_previous"><a href="#"
-									aria-controls="datatable" data-dt-idx="0" tabindex="0">Previous</a></li>
-								<li class="paginate_button active"><a href="#"
-									aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a></li>
-								<li class="paginate_button "><a href="#"
-									aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a></li>
-								<li class="paginate_button "><a href="#"
-									aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a></li>
-								<li class="paginate_button "><a href="#"
-									aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a></li>
-								<li class="paginate_button "><a href="#"
-									aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a></li>
-								<li class="paginate_button "><a href="#"
-									aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a></li> 
-								<li class="paginate_button next" id="datatable_next"><a
-									href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">Next</a></li>
-								<li class="paginate_button next" id="datatable_next"><a
-									href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">尾页</a></li>
-									-->
 							</ul>
 						</div>
 					</div>

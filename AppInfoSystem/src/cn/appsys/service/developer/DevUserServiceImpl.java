@@ -13,10 +13,10 @@ public class DevUserServiceImpl implements DevUserService {
 	private DevUserMapper devUserMapper;
 
 	@Override
-	public ResultData selectDevUserByCode(String devcode, String devpassword) {
+	public ResultData selectDevUserByCode(String devCode, String devpassword) {
 		ResultData rd = new ResultData();
-		if (devcode != null && devcode != "") {
-			DevUser user = devUserMapper.selectDevUserByCode(devcode);
+		if (devCode != null && devCode != "") {
+			DevUser user = devUserMapper.selectDevUserByCode(devCode);
 			if (user != null) {
 				if (user.getDevpassword().equals(devpassword)) {
 					rd.setFlag(0);

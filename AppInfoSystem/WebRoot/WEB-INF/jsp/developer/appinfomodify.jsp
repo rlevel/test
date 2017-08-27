@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
 <%@include file="common/header.jsp"%>
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -60,7 +59,7 @@
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="text" id="first-name"
-								class="form-control col-md-7 col-xs-12" value="${appInfo.interfaceLanguage }">
+								class="form-control col-md-7 col-xs-12" value="${appInfo.interfaceLanguage}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -105,7 +104,7 @@
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input type="hidden" value="${appInfo.categoryLevel1}" id="cl1"/>
-										<select name="categoryLevel1" id="categoryLevel1"
+										<select name="querycategoryLevel1" id="querycategoryLevel1"
 											class="form-control">
 											<c:if test="${categorylevel1List!=null}"></c:if>
 											<option value="">--请选择--</option>
@@ -121,42 +120,43 @@
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">二级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="hidden" value="${appInfo.categoryLevel2}" id="cl2"/>
-										<select name="categoryLevel2" id="categoryLevel2"
+										<select name="querycategoryLevel1" id="querycategoryLevel1"
 											class="form-control">
-											<c:if test="${result.data!=null}"></c:if>
+											<c:if test="${categorylevel2List!=null}"></c:if>
 											<option value="">--请选择--</option>
-											<c:forEach items="${result.data}" var="appCa">
+											<c:forEach items="${categorylevel2List.data}" var="appCa">
 												<option
-													<c:if test="${appCa.id==querycategoryLevel2}">selected="selected"</c:if>
+													<c:if test="${appCa.id==appInfo.categoryLevel2}">selected="selected"</c:if>
 													value="${appCa.id}">${appCa.categoryName}</option>
 											</c:forEach>
+											
 										</select>
 									</div>
-								</div>
+								</div> 
 					<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">三级分类</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="hidden" value="${appInfo.categoryLevel3}" id="cl3"/>
-										<select name="categoryLevel3" id="categoryLevel3"
+										<select name="querycategoryLevel1" id="querycategoryLevel1"
 											class="form-control">
-											<c:if test="${result.data!=null}"></c:if>
+											<c:if test="${categorylevel3List==null}">
 											<option value="">--请选择--</option>
-											<c:forEach items="${result.data}" var="appCa">
+											</c:if>
+											<c:forEach items="${categorylevel3List.data}" var="appCa">
 												<option
-													<c:if test="${appCa.id==querycategoryLevel3}">selected="selected"</c:if>
+													<c:if test="${appCa.id==appInfo.categoryLevel3}">selected="selected"</c:if>
 													value="${appCa.id}">${appCa.categoryName}</option>
 											</c:forEach>
 										</select>
 									</div>
-								</div>
+								</div> 
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12"
 							for="first-name">APP状态&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<!-- 传数字到后台 value -->
-							<input type="hidden" name="status" id="status" value="1"/>待审核
-							<!-- <input type="text" id="first-name" class="form-control col-md-7 col-xs-12"> -->
+							<input type="hidden" name="status" id="status" value="1"/>${appInfo.statusName}
 						</div>
 					</div>
 					<div class="form-group">
@@ -164,8 +164,8 @@
 							for="first-name">应用简介&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<textarea id= "appInfo" name= "appInfo"
-								class="form-control col-md-7 col-xs-12" value="${appInfo.appInfo}"></textarea>
+							<textarea id= "appInfos" name= "appInfos"
+								class="form-control col-md-7 col-xs-12" value="${appInfo.appInfos}">${appInfo.appInfos}</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -180,24 +180,24 @@
 								class="form-control col-md-7 col-xs-12"><p>
 								<span style="color:red;font-weight:bold;">*注:1.大小不得超过500k,2.图片格式:jsp...4个</span></p>
 							</div>
-							<div id="logoFile"></div>
+							<div id="logoFile"><img alt="..." src="${appInfo.logoPicPath}"></div>
 								${fileUploadError }
 						</div>
 					</div>
 					<div class="ln_solid"></div>
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button class="btn btn-primary" type="button">Cancel</button>
-							<button id="back" class="btn btn-primary" type="reset">Reset</button>
-							<button id="send" type="submit" class="btn btn-success">Submit</button>
+							<button type="button" onclick="history.go(-1)" class="btn btn-dark" >返回</button>
+							<button id="back" class="btn btn-primary" type="reset">重填</button>
+							<button type="submit" class="btn btn-success">提交</button>
 						</div>
 					</div>
-
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
 <%@include file="common/footer.jsp"%>
+
 <script
 	src="${pageContext.request.contextPath}/statics/localjs/appinfomodify.js"></script>

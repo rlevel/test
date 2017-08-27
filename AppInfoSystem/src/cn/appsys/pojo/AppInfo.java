@@ -23,7 +23,7 @@ public class AppInfo implements Serializable {
 
 	private Integer devId;
 
-	private String appInfo;
+	private String appInfos;
 
 	private Integer status;
 
@@ -163,12 +163,12 @@ public class AppInfo implements Serializable {
 		this.updateDate = updateDate;
 	}
 
-	public String getAppInfo() {
-		return appInfo;
+	public String getAppInfos() {
+		return appInfos;
 	}
 
-	public void setAppInfo(String appInfo) {
-		this.appInfo = appInfo;
+	public void setAppInfos(String appInfos) {
+		this.appInfos = appInfos;
 	}
 
 	public Date getOnSaleDate() {
@@ -313,7 +313,7 @@ public class AppInfo implements Serializable {
 				+ ", APKName=" + APKName + ", supportROM=" + supportROM
 				+ ", interfaceLanguage=" + interfaceLanguage
 				+ ", softwareSize=" + softwareSize + ", updateDate="
-				+ updateDate + ", devId=" + devId + ", appInfo=" + appInfo
+				+ updateDate + ", devId=" + devId + ", appInfos=" + appInfos
 				+ ", status=" + status + ", onSaleDate=" + onSaleDate
 				+ ", offSaleDate=" + offSaleDate + ", flatformId=" + flatformId
 				+ ", categoryLevel1=" + categoryLevel1 + ", categoryLevel2="

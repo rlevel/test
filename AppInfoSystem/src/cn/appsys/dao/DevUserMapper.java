@@ -17,6 +17,6 @@ public interface DevUserMapper {
 
 	int updateByPrimaryKey(DevUser record);
 
-	@Select("select * from dev_user where devcode=#{devcode}")
-	DevUser selectDevUserByCode(String devcode);
+	@Select("select * from dev_user where devCode=#{devCode}")
+	DevUser selectDevUserByCode(String devCode);
 }

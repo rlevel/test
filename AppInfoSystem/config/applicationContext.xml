@@ -62,16 +62,7 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
-	<!-- 配置事物增强 -->
-	<!-- <tx:advice id="myAdvice" transaction-manager="txManager">
-		<tx:attributes>
-			<tx:method name="appsys*" propagation="REQUIRED" rollback-for="Exception"/>
-			<tx:method name="*"/>
-		</tx:attributes>
-	</tx:advice> -->
-	
-	
+		
 	<!-- 声明使用注解式事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<!-- AOP 利用组件扫描，将切面组件纳入Spring容器。虽然可以通过编程的方式织入切面，
@@ -103,52 +94,6 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
-	
-	<!--配置多视图解析器 -->
-	<!-- <mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediatypes" value="utf-8"></property>
-				<property name="supportedMediatypes">
-					<list>
-						<value>application/json;charset=UTF-8</value>
-					</list>
-				</property>
-			</bean>
-			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-				<property name="supportedMediatypes">
-					<list>
-						<value>test/html;charset=UTF-8</value>
-						<value>application/json</value>
-					</list>
-				</property>
-				日期格式化 年月日 时分秒
-				<property name="features">
-					<list>在实体类上面添加@JsonFiled
-						<value>WriteDateUseDateFormat</value>
-					</list>
-				</property>
-			</bean>
-			
-		</mvc:message-converters>
-	</mvc:annotation-driven> -->
-	
-	
-	 <!-- 配置(多)视图解析器：如何把handler方法返回值解析为实际的物理视图 -->
-	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/"></property>
-		<property name="suffix" value=".jsp"></property>
-		<property name="favorParameter" value="true"/>
-		<property name="defaultContentType" value="text/html"/>
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html; charset=UTF-8"/>
-				<entry key="json" value="application/json; charset=UTF-8"/>
-				<entry key="xml" value="application/xml; charset=UTF-8"/>
-			</map>
-		</property>
-	</bean> -->
-	
 	<!-- 上传组件解释器的配制 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>
@@ -156,13 +101,17 @@
 	</bean>
 	
 	<!-- 拦截器配制 -->
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/jsp/**"/>
-			<mvc:exclude-mapping path="/jsp/login.jsp"/>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/begin/**"/>
+			<mvc:exclude-mapping path="/devuser/login"/>
+			<mvc:exclude-mapping path="/bacuser/login"/>
+			<mvc:exclude-mapping path="/statics/localjs/**"/>
+			<mvc:exclude-mapping path="/**/*.js"/>
 			<bean class="cn.appsys.interceptor.MyInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	
 	<!-- 异常处理bean -->
 	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

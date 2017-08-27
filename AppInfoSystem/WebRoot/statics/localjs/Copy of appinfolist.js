@@ -2,60 +2,217 @@ $("#querycategoryLevel1").change(function(){
 	var level1= $(this).val();
 	if(level1!="" && level1!=null){
 		$.ajax({
-			//ÇëÇóÀàĞÍ
+			//è¯·æ±‚ç±»å‹
 			type:"GET",
-			//ÇëÇóµÄURL
-			url:"categorylevelList.json",
-			data:{pid:level1},
-			//·µ»ØµÄÊı¾İÀàĞÍ
+			//è¯·æ±‚çš„URL
+			url:"../appInfo/categoryLevelList.json",
+			data:{"pid":level1},
+			//è¿”å›çš„æ•°æ®ç±»å‹
 			dataType:"json",
-			success:function(data){//data:·µ»ØµÄjson¶ÔÏó
-				$("querycategoryLevel2").html("");
-				var options = "<option value=''>--ÇëÑ¡Ôñ--</option>"
-				for(var i=0;i<data.lenth;i++){
-					option +="<option value='"+data[i].id+"'>"+data[i].categoryname+"</option>";
+			success:function(data){//data:è¿”å›çš„jsonå¯¹è±¡
+				$("#querycategoryLevel2").html("");
+				var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
+				for(var i=0;i<data.data.length;i++){
+					var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
+					$("#querycategoryLevel2").append(j);
 				}
-				$("#querycategoryLevel2").html(options);
 			},
-			error:function(data){//µ±·ÃÎÊÊ±¿ÉÄÜ³öÏÖ404,505
-				alert("¼ÓÔØ¶ş¼¶·ÖÀàÊ§°Ü")
+			error:function(data){//å½“è®¿é—®æ—¶å¯èƒ½å‡ºç°404,505
+				alert("åŠ è½½äºŒçº§åˆ†ç±»å¤±è´¥");
 			}
-		})
+		});
 	}else{
 		$("#querycategoryLevel2").html();
-		var options = "<option value=''>--ÇëÑ¡Ôñ--</option>"
+		var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
 		$("#querycategoryLevel2").html(options);
 	}
 	$("#querycategoryLevel3").html();
-	var options = "<option value=''>--ÇëÑ¡Ôñ--</option>"
+	var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
 	$("#querycategoryLevel3").html(options);
 });
 $("#querycategoryLevel2").change(function(){
-	var querycategoryLevel2= $("querycategoryLevel2").val();
+	var querycategoryLevel2= $("#querycategoryLevel2").val();
 	if(querycategoryLevel2!="" && querycategoryLevel2!=null){
 		$.ajax({
-			//ÇëÇóÀàĞÍ
+			//è¯·æ±‚ç±»å‹
 			type:"GET",
-			//ÇëÇóµÄURL
-			url:"categorylevelList.json",
-			data:{pid:level1},
-			//·µ»ØµÄÊı¾İÀàĞÍ
+			//è¯·æ±‚çš„URL
+			url:"../appInfo/categoryLevelList.json",
+			data:{"pid":querycategoryLevel2},
+			//è¿”å›çš„æ•°æ®ç±»å‹
 			dataType:"json",
-			success:function(data){//data:·µ»ØµÄjson¶ÔÏó
-				$("querycategoryLevel3").html("");
-				var options = "<option value=''>--ÇëÑ¡Ôñ--</option>"
-				for(var i=0;i<data.lenth;i++){
-					option +="<option value='"+data[i].id+"'>"+data[i].categoryname+"</option>";
-				}
-				$("#querycategoryLevel3").html(options);
+			success:function(data){//data:è¿”å›çš„jsonå¯¹è±¡
+				$("#querycategoryLevel3").html("");
+				var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
+					for(var i=0;i<data.data.length;i++){
+						var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryName+"</option>";
+						$("#querycategoryLevel3").append(j);
+					}
+				/*//$("#querycategoryLevel2").html("");
+				var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
+				for(var i=0;i<data.data.length;i++){
+					var j ="<option value='"+data.data[i].id+"'>"+data.data[i].categoryname+"</option>";
+					$("#querycategoryLevel2").append(j);
+				}*/
 			},
-			error:function(data){//µ±·ÃÎÊÊ±¿ÉÄÜ³öÏÖ404,505
-				alert("¼ÓÔØÈı¼¶·ÖÀàÊ§°Ü")
+			error:function(data){//å½“è®¿é—®æ—¶å¯èƒ½å‡ºç°404,505
+				alert("åŠ è½½ä¸‰çº§åˆ†ç±»å¤±è´¥")
 			}
 		})
 	}else{
 		$("#querycategoryLevel3").html();
-		var options = "<option value=''>--ÇëÑ¡Ôñ--</option>"
+		var options = "<option value=''>--è¯·é€‰æ‹©--</option>"
 		$("#querycategoryLevel3").html(options);
 	}
 });
+
+$(".modifyAppinfo").on("click",function(){
+	var obj=$(this);
+	var status = obj.attr("status");
+	if(status=="1" ||status=="3"){//å¾…å®¡æ ¸,å®¡æ ¸æœªé€šè¿‡-->ä¿®æ”¹
+		window.location.href="appinfomodify?id="+obj.attr("appinfoid");
+	}else{
+		alert("APPçŠ¶æ€ä¸º<"+obj.attr("statusName")+">,ä¸è®¸ä¿®æ”¹");
+	}
+});
+
+$(".addVersion").on("click",function(){
+	var obj = $(this);
+	window.location.href="appversionadd?id="+obj.attr("appinfoid");
+});
+
+$(".modifyVersion").on("click",function(){
+	var obj = $(this);
+	var status = obj.attr("status");
+	var versionid = obj.attr("versionid");
+	var appinfoid = obj.attr("appinfoid");
+	if(status=="1" || !versionid==""){
+		if(versionid==null || versionid==""){
+			alert("æ— ç‰ˆæœ¬,ä¸èƒ½æ”¹");
+		}else{
+			window.location.href="appversionmodify?vid="+versionid+"&aid="+appinfoid;
+		}
+		
+	}else{
+		alert("çŠ¶æ€ä¸º<"+obj.attr("statusname")+">,ä¸èƒ½ä¿®æ”¹");
+	}
+	
+});
+
+$(".viewApp").on("click",function(){
+	var obj = $(this);
+	var id = +obj.attr("appinfoid");
+	var status = obj.attr("status");
+	var versionid = obj.attr("versionid");
+	var appinfoid = obj.attr("appinfoid");
+	window.location.href="appview?id="+id+"&vid="+versionid+"&aid="+appinfoid;
+});
+
+$(".deleteApp").on("click",function(){
+	var obj = $(this);
+	if(confirm("ä½ ç¡®å®šè¦åˆ é™¤<"+obj.attr("appsoftweraName")+">åŠå…¶æ‰€æœ‰ç‰ˆæœ¬å—")){
+		$.ajax({
+			//è¯·æ±‚ç±»å‹
+			type:"GET",
+			//è¯·æ±‚çš„URL
+			url:"../appInfo/delapp.json",
+			data:{"id":obj.attr("appinfoid")},
+			//è¿”å›çš„æ•°æ®ç±»å‹
+			dataType:"json",
+			success:function(data){//data:è¿”å›çš„jsonå¯¹è±¡
+				if(data.delResult=="true"){
+					alery("åˆ é™¤æˆåŠŸ");
+					obj.parents("tr").remove();
+					/*window.location.href="/appInfo/appInfoList"*/
+				}else if(data.delResult=="false"){
+					alert("<"+obj.attr("appsoftweraName")+">åˆ é™¤å¤±è´¥");
+				}else if(data.delResult=="notexist"){
+					alert("<"+obj.attr("appsoftweraName")+">ä¸å­˜åœ¨")
+				}
+			},
+			error:function(data){//å½“è®¿é—®æ—¶å¯èƒ½å‡ºç°404,505
+				alert("å¯¹ä¸èµ·")
+			}
+		});
+	}
+});
+
+$(document).on("click",".saleSwichOpen,.saleSwichClose",function(){
+	var obj = $(this);
+	var appId = obj.attr("appinfoid");
+	var status = obj.attr("status");
+	$.ajax({
+		//è¯·æ±‚ç±»å‹
+		type:"POST",
+		//è¯·æ±‚çš„URL
+		url:"../appInfo/sale.json",
+		data:{"valueId":appId,"status":status},
+		//è¿”å›çš„æ•°æ®ç±»å‹
+		dataType:"json",
+		success:function(data){//data:è¿”å›çš„jsonå¯¹è±¡
+			if(data=='success'){
+				location.reload(true);
+			}
+			
+		}
+	});
+});
+
+var saleSwitchAjax = function(appId,obj){
+	$.ajax({
+		type:"POST",
+		url:"../appInfo/sale.json",
+		data:{"appId":appId},
+		dataType:"json",
+		success:function(data){
+			if(data.errorCode=='0'){
+				if(data.resultMsg=='success'){
+					if("open" == obj.attr("saleSwitch")){
+						$("#appInfoStatus"+obj.attr("appinfoid")).html("å·²ä¸Šæ¶");
+						obj.className="saleSwichClose";
+						obj.html("ä¸‹æ¶");
+						obj.attr("saleSwitch","close");
+						$("#appInfoStatus"+obj.attr("appinfoid")).css({
+							'background':'green',
+							'color':'#fff',
+							'padding':'3px',
+							'border-radius':'3px'
+						});
+						$("#appInfoStatus"+obj.attr("appinfoid")).hide();
+						
+						$("#appInfoStatus"+obj.attr("appinfoid")).slideDown(300);
+					}else if("close" == obj.attr("saleSwitch")){
+						$("#appInfoStatus"+obj.attr("appinfoid")).html("å·²ä¸‹æ¶");
+						obj.className="saleSwichClose";
+						obj.html("ä¸Šæ¶");
+						obj.attr("saleSwitch","open");
+						$("#appInfoStatus"+obj.attr("appinfoid")).css({
+							'background':'red',
+							'color':'#fff',
+							'padding':'3px',
+							'border-radius':'3px'
+						});
+						$("#appInfoStatus"+obj.attr("appinfoid")).hide();
+						
+						$("#appInfoStatus"+obj.attr("appinfoid")).slideDown(300);
+					}
+				}else if(data.resultMsg=='failed'){
+					if("open"==obj.attr("saleSwitch")){
+						alert("<"+obj.attr("appsoftwarename")+">çš„<ä¸Šæ¶æ“ä½œå¤±è´¥>");
+					}else if("close"== obj.attr("saleSwitch")){
+						alert("<"+obj.attr("appsoftwarename")+">çš„<ä¸‹æ¶æ“ä½œå¤±è´¥>");
+					}
+				}
+			}else{
+				alert("ä¸çŸ¥é“ä½ åœ¨åšä»€ä¹ˆ,å¾ˆå¥‡æ€ª");
+			}
+		},
+		error:function(data){
+			if("open"==obj.attr("saleSwitch")){
+				alert("<"+obj.attr("appsoftwarename")+">çš„<ä¸Šæ¶æ“ä½œå¤±è´¥>");
+			}else if("close"== obj.attr("saleSwitch")){
+				alert("<"+obj.attr("appsoftwarename")+">çš„<ä¸‹æ¶æ“ä½œå¤±è´¥>");
+			}
+		}
+	});
+}

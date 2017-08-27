@@ -36,7 +36,7 @@ public class BackendUser {
 	}
 
 	public void setUsercode(String usercode) {
-		this.usercode = usercode == null ? null : usercode.trim();
+		this.usercode = usercode;
 	}
 
 	public String getUsername() {

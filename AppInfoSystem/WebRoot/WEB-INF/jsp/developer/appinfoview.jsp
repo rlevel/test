@@ -115,8 +115,8 @@
 							for="first-name">应用简介&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<textarea id= "appInfo" name= "appInfo" readonly="readonly"
-								class="form-control col-md-7 col-xs-12" value="${appInfo.appInfo}"></textarea>
+							<textarea id= "appInfos" name= "appInfos" readonly="readonly"
+								class="form-control col-md-7 col-xs-12" value="${appInfo.appInfos}">${appInfo.appInfos}</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -131,7 +131,7 @@
 								class="form-control col-md-7 col-xs-12"><p>
 								<span style="color:red;font-weight:bold;">*注:1.大小不得超过500k,2.图片格式:jsp...4个</span></p>
 							</div>
-							<div id="logoFile"></div>
+							<div id="logoFile"><img alt="..." src="${appInfo.logoPicPath}"></div>
 								${fileUploadError }
 						</div>
 					</div>

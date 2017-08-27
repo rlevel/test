@@ -6,12 +6,12 @@
 					<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
 						<div class="count">欢迎你:</div>
 						<span class="count_top"><i class="fa fa-user"></i></span> <span
-							class="count_bottom"><i class="green"> ${suser.devname }</i></span>
+							class="count_bottom"><i class="green"> ${devUserSession.devname }</i></span>
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
 						<div class="count">角色</div>
 						<span class="count_top"><i class="fa fa-user"></i></span> <span
-							class="count_bottom"><i class="green">${suser.devinfo }</i></span>
+							class="count_bottom"><i class="green"><%-- ${suser.devtypeName } --%></i></span>
 					</div>
 				</div>
 				<!-- /top tiles -->

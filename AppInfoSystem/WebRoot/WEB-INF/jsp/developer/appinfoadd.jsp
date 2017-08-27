@@ -48,7 +48,7 @@
 							for="first-name">支持ROM&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" id="first-name" id="supportROM" name="supportROM"
+							<input type="text" id="supportROM" name="supportROM"
 								class="form-control col-md-7 col-xs-12" placeholder="请输入支持的ROM">
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 							for="first-name">界面语言&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input type="text" id="first-name"
+							<input type="text" id="interfaceLanguage"  name="interfaceLanguage"
 								class="form-control col-md-7 col-xs-12" placeholder="请输入软件支持的界面语言">
 						</div>
 					</div>
@@ -159,7 +159,7 @@
 							for="first-name">应用简介&nbsp;<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<textarea id= "appInfo" name= "appInfo"
+							<textarea id= "appInfos" name= "appInfos"
 								class="form-control col-md-7 col-xs-12" placeholder="请输入本软件的相关信息,本信息作为软件的详细信息进行软件介绍"></textarea>
 						</div>
 					</div>
@@ -176,9 +176,9 @@
 					<div class="ln_solid"></div>
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button class="btn btn-primary" type="button">Cancel</button>
-							<button id="back" class="btn btn-primary" type="reset">Reset</button>
-							<button type="submit" class="btn btn-success">Submit</button>
+							<button type="button" onclick="history.go(-1)" class="btn btn-dark" >返回</button>
+							<button id="back" class="btn btn-primary" type="reset">重填</button>
+							<button type="submit" class="btn btn-success">提交</button>
 						</div>
 					</div>
 

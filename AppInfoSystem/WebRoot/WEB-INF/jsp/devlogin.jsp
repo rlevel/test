@@ -32,9 +32,9 @@
 <script type="text/javascript">
 	$(function(){
 		$(".isLogin").on("click",function(){
-			var devcode = $("#devcode").val();
+			var devCode = $("#devCode").val();
 			var password = $("#devpassword").val();
-			$.getJSON("../devuser/login",{"devcode":devcode,"devpassword":password},function(data){
+			$.getJSON("../devuser/login",{"devCode":devCode,"devpassword":password},function(data){
 				if(data!=null){
 					if(data.flag==0){
 						window.location.href="../devuser/devIndex";
@@ -59,7 +59,7 @@
             <form action="../devuser/login"  name="actionForm" id="actionForm"  method="post" >
               <h1>APP开发者平台</h1>
               <div>
-                <input type="text" id="devcode" name="devcode" class="form-control" placeholder="请输入用户名" required="" /><span id="loginNameSpan"></span>
+                <input type="text" id="devCode" name="devCode" class="form-control" placeholder="请输入用户名" required="" /><span id="loginNameSpan"></span>
               </div>
               <div>
                 <input type="password" id="devpassword" name="devpassword" class="form-control" placeholder="请输入密码" required="" />

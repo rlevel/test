@@ -17,4 +17,6 @@ public interface appVersionService {
 
 	public ResultData updateAppVersion(AppVersion appVersion);
 
+	public ResultData getAppVersion(Integer id);
+
 }

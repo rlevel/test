@@ -7,4 +7,6 @@ public interface AppCategoryService {
 	public ResultData getAppCategoriesByParentId(Integer parentId);
 
 	public ResultData getAppCategoriesByPid(Integer parentId);
+
+	public ResultData getAppCategoriesById(Integer id);
 }

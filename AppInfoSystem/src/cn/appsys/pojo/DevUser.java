@@ -8,7 +8,7 @@ public class DevUser implements Serializable {
 
 	private Integer id;
 
-	private String devcode;
+	private String devCode;
 
 	private String devname;
 
@@ -26,12 +26,22 @@ public class DevUser implements Serializable {
 
 	private Date modifydate;
 
-	public String getDevcode() {
-		return devcode;
+	private String devtypeName;
+
+	public String getDevtypeName() {
+		return devtypeName;
 	}
 
-	public void setDevcode(String devcode) {
-		this.devcode = devcode == null ? null : devcode.trim();
+	public void setDevtypeName(String devtypeName) {
+		this.devtypeName = devtypeName;
+	}
+
+	public String getDevCode() {
+		return devCode;
+	}
+
+	public void setDevCode(String devCode) {
+		this.devCode = devCode;
 	}
 
 	public String getDevname() {
@@ -108,11 +118,12 @@ public class DevUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DevUser [id=" + id + ", devcode=" + devcode + ", devname="
+		return "DevUser [id=" + id + ", devCode=" + devCode + ", devname="
 				+ devname + ", devpassword=" + devpassword + ", devemail="
 				+ devemail + ", devinfo=" + devinfo + ", createdby="
 				+ createdby + ", creationdate=" + creationdate + ", modifyby="
-				+ modifyby + ", modifydate=" + modifydate + "]";
+				+ modifyby + ", modifydate=" + modifydate + ", devtypeName="
+				+ devtypeName + "]";
 	}
 
 }

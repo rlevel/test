@@ -17,4 +17,5 @@ public class BeginController {
 		// 跳转到开发者登录页面
 		return "devlogin";
 	}
+
 }
